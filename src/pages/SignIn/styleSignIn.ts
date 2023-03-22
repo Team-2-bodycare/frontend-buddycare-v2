@@ -55,7 +55,7 @@ export const SignInInput = styled.input`
   &:focus ~ span, &:valid ~ span {
     transform: translateY(-20px);
     padding: 1px 5px 1px 5px;
-    background-color: rgba(56,201,244, 0.8);
+    background-color: rgb(56,201,244);
     border-radius: 3px;
     font-size: 14px;
     opacity: 1;
