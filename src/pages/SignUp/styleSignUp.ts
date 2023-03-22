@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import background from '../../assets/img/background.jpg';
+import background from "../../assets/img/background.jpg";
 
 export const SignUpContainer = styled.div`
   background-image: url(${background});
@@ -43,17 +43,22 @@ export const SignUpTitle = styled.h2`
 `;
 
 export const SignUpInput = styled.input`
+  background-color: rgba(240, 240, 240, 0.8);
   width: 240px;
   padding: 10px;
   margin-top: 20px;
   border-radius: 5px;
-  border: 1px solid rgb(56,201,244);
+  border: 1px solid rgb(56, 201, 244);
   outline: none;
   font-size: 14px;
   color: rgb(115, 115, 115);
 
-  &:focus ~ span, &:valid ~ span {
-    transform: translateY(-25px);
+  &:focus ~ span,
+  &:valid ~ span {
+    transform: translateY(-20px);
+    padding: 1px 5px 1px 5px;
+    background-color: rgb(56, 201, 244);
+    border-radius: 3px;
     font-size: 14px;
     opacity: 1;
     color: white;
@@ -70,7 +75,7 @@ export const SignUpSpanName = styled.span`
   top: 30px;
   pointer-events: none;
   transition: 0.5s;
-  opacity: .5;
+  opacity: 0.5;
 `;
 
 export const SignUpSpanEmail = styled.span`
@@ -79,7 +84,7 @@ export const SignUpSpanEmail = styled.span`
   top: 30px;
   pointer-events: none;
   transition: 0.5s;
-  opacity: .5;
+  opacity: 0.5;
 `;
 
 export const SignUpSpanPhone = styled.span`
@@ -88,7 +93,7 @@ export const SignUpSpanPhone = styled.span`
   top: 30px;
   pointer-events: none;
   transition: 0.5s;
-  opacity: .5;
+  opacity: 0.5;
 `;
 
 export const SignUpSpanPassword = styled.span`
@@ -97,11 +102,11 @@ export const SignUpSpanPassword = styled.span`
   top: 30px;
   pointer-events: none;
   transition: 0.5s;
-  opacity: .5;
+  opacity: 0.5;
 `;
 
 export const SignUpButton = styled.button`
-background-color: rgb(56,201,244);
+  background-color: rgb(56, 201, 244);
   width: 240px;
   margin-top: 10px;
   padding: 10px;
@@ -114,7 +119,7 @@ background-color: rgb(56,201,244);
   transition: all 0.8s ease-out;
 
   &:hover {
-    background-color: rgb(46,171,244);
+    background-color: rgb(46, 171, 244);
   }
 `;
 

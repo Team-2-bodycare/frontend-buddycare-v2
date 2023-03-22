@@ -42,6 +42,7 @@ export const SignInTitle = styled.h2`
 `;
 
 export const SignInInput = styled.input`
+  background-color: rgba(240, 240, 240, 0.8);
   width: 240px;
   padding: 10px;
   margin-top: 20px;
@@ -52,7 +53,10 @@ export const SignInInput = styled.input`
   color: rgb(115, 115, 115);
 
   &:focus ~ span, &:valid ~ span {
-    transform: translateY(-25px);
+    transform: translateY(-20px);
+    padding: 1px 5px 1px 5px;
+    background-color: rgba(56,201,244, 0.8);
+    border-radius: 3px;
     font-size: 14px;
     opacity: 1;
     color: white;
