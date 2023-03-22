@@ -1,62 +1,85 @@
-import styled from 'styled-components';
-import Imagem from '../../assets/img/background.jpg';
+import styled from "styled-components";
+import Imagem from "../../assets/img/background.jpg";
 
 export const Header = styled.header`
   background-image: url(${Imagem});
   background-size: cover;
   background-position: center;
-  height: 500px;
+  width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   & > img {
-    height: 250px;
-    margin-bottom: 16px;
+    width: 100%;
+
+    margin: 40px 0 20px 0;
   }
 
   & > h1 {
     font-size: 30px;
     font-weight: bold;
+    text-align: center;
+    padding-bottom: 20px;
     color: white;
-    text-shadow: 1px 1px 1px  black;
+    text-shadow: 1px 1px 1px black;
+
+    @media screen and (max-width: 470px) {
+      font-size: 20px;
+    }
   }
 `;
 
+export const CardGrid = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 10px;
+  padding: 10px;
+  margin-top: 20px;
+`;
+
 export const Card = styled.div`
-max-width: 100%;
-padding: 2em;
-text-align: center;
-position: relative;
-width: 25%;
-height: 150px;
-border-radius: 20px;
-border: 1px solid #fff;
-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-padding: 1rem;
-cursor: pointer;
-transition: all 0.2s ease-in-out;
-margin: 30px;
-text-shadow: 1px 1px 1px  black;
+  display: flex;
+  width: 100%;
+  height: 200px;
+  flex-direction: column;
+  padding: 2em;
+  text-align: center;
 
-&:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
-}
+  border-radius: 20px;
+  border: 1px solid #fff;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  padding-top: 100px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-shadow: 1px 1px 1px black;
 
-h3 {
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  }
+`;
+
+export const TitleCard = styled.h3`
   color: #ffffff;
-  max-width: 20em;
-  font-size: 1.5rem;
-  margin: 0 auto;
+  font-size: 20px;
+  margin-bottom: 0 auto;
   line-height: 1.2;
   word-wrap: break-word;
-}
 
-@media screen and (max-height: 610px) {
-  height: 100%;
-}
+  @media screen and (max-height: 610px) {
+    height: 100vh;
+  }
+`;
+
+export const CarrouselContainer =styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const TestimonialCard = styled.div`

@@ -43,9 +43,12 @@ const Carousel: React.FC = () => {
     <div
       style={{
         display: 'flex',
+        width: '250px',
         flexDirection: 'column',
+        justifyContent: 'center',
         alignItems: 'center',
-        marginTop: '50px',
+        textAlign: 'center',
+        padding: '10px',
       }}
     >
       <h2>Depoimentos</h2>
@@ -55,7 +58,6 @@ const Carousel: React.FC = () => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          marginTop: '20px',
         }}
       >
         <button onClick={handlePrevClick}>Anterior</button>
@@ -67,8 +69,6 @@ const Carousel: React.FC = () => {
             height: '100px',
             width: '100px',
             borderRadius: '50%',
-            marginLeft: '20px',
-            marginRight: '20px',
           }}
         />
 
