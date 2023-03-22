@@ -24,7 +24,7 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-const TestimonialsCarousel: React.FC = () => {
+const Carousel: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handlePrevClick = () => {
@@ -81,4 +81,4 @@ const TestimonialsCarousel: React.FC = () => {
   );
 };
 
-export { TestimonialsCarousel };
+export { Carousel };
