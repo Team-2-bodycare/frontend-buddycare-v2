@@ -11,7 +11,7 @@ import {
   SignUpSpanPhone,
   SignUpSpanPassword,
   SignUpTitle,
-} from "./styleSignUp";
+} from "../signUp/styleSignUp";
 import signup from "../../assets/img/signup.png";
 import { useNavigate } from "react-router-dom";
 
@@ -22,7 +22,7 @@ export function SignUp() {
     <SignUpContainer>
       <SignUpForm>
         <SignUpLogo src={signup} />
-        <SignUpTitle>Acesse o Buddy Care</SignUpTitle>
+        <SignUpTitle>Criar conta no Buddy Care</SignUpTitle>
         <SignUpFormGroup>
           <SignUpInput autoComplete="off" type="text" name="name" required />
           <SignUpSpanName>Nome</SignUpSpanName>

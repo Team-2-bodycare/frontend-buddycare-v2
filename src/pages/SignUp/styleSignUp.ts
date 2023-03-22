@@ -15,7 +15,7 @@ export const SignUpForm = styled.form`
   width: 260px;
   border-radius: 20px;
   border: none;
-  padding: 0px 20px 0px 20px;
+  padding: 0px 10px 0px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,6 +30,7 @@ export const SignUpLogo = styled.img`
 export const SignUpTitle = styled.h2`
   font-size: 18px;
   color: rgb(115, 115, 115);
+  margin: 0;
 `;
 
 export const SignUpInput = styled.input`
