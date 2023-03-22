@@ -4,7 +4,7 @@ export interface ISignUp {
   phone: string;
   password: string;
   photo?: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
   isPsychologist: boolean;
 }

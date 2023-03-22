@@ -2,7 +2,7 @@ import { Api } from "../api/Api";
 import swal from "sweetalert";
 import { ISignUp } from "../../interfaces/ISignUp";
 
-export const RegisterService = {
+export const SignUpService = {
   Register: async (values: ISignUp) => {
     try {
       const res = await Api.post("/user", values);
