@@ -50,7 +50,7 @@ export function SignIn() {
     }
 
     const jwt = response.data.token;
-    const type = response.data.isPsychologist;
+    const type = response.data.user.isPsychologist;
 
     if (jwt) {
       localStorage.setItem("jwt", jwt);

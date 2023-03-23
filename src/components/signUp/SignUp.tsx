@@ -1,7 +1,6 @@
 import {
   SignUpAccount,
   SignUpButton,
-  SignUpContainer,
   SignUpForm,
   SignUpFormGroup,
   SignUpInput,
@@ -12,16 +11,18 @@ import {
   SignUpSpanPassword,
   SignUpTitle,
   SignUpImgHome,
-} from "../signUp/styleSignUp";
+  SignUpContainer,
+} from "./styleSignUp";
 import swal from "sweetalert";
 import home from "../../assets/img/home.png";
 import signup from "../../assets/img/signup.png";
 import { useNavigate } from "react-router-dom";
 import { ISignUp } from "../../interfaces/ISignUp";
 import { useState } from "react";
-import { SignUpService } from "../../services/users/UserSignUp";
+import { SignUpService } from "../../services/users/UserSignUp"
+import { ITypeUser } from "../../interfaces/ITypeUser";
 
-export function SignUp() {
+export function SignUp(props: ITypeUser) {
   const navigate = useNavigate();
 
   const [values, setValues] = useState<ISignUp>({
@@ -29,8 +30,9 @@ export function SignUp() {
     email: "",
     phone: "",
     password: "",
-    isPsychologist: false,
+    isPsychologist: props.typeUser,
   });
+  console.log(values);
 
   const handleChangesValues = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValues((values: ISignUp) => ({
@@ -43,6 +45,7 @@ export function SignUp() {
     e.preventDefault();
 
     const response: any = await SignUpService.Register(values);
+    console.log(response);
 
     if (!response) {
       swal({
@@ -133,6 +136,12 @@ export function SignUp() {
           />
           <SignUpSpanPassword>Senha</SignUpSpanPassword>
         </SignUpFormGroup>
+        <SignUpInput
+          type="hidden"
+          name="isPsychologist"
+          required
+          onChange={handleChangesValues}
+        />
         <SignUpButton>Salvar</SignUpButton>
         <SignUpAccount onClick={() => navigate("/signin")}>
           Já tem uma conta? Entre aqui!
