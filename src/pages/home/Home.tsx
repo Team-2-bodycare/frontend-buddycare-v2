@@ -15,6 +15,7 @@ import Card3 from "../../assets/img/card3.png";
 import { Menu } from "../../components/menu/Menu";
 import { Footer } from "../../components/footer/Footer";
 import { ButtonWhatsap } from "../../components/buttonWhatsap/ButtonWhatsap";
+import { ContactForm } from "../../components/contactForm/ContactForm";
 
 
 const modalTexts = {
@@ -96,6 +97,8 @@ const Home: React.FC = () => {
         <StyleButtton>
         <ButtonWhatsap />
         </StyleButtton>
+
+        <ContactForm />
 
         <Footer />
       </div>
