@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Carousel } from "../../components/carousel/Carousel";
+import Carousel from "../../components/carousel/Carousel";
+import { testimonials } from "../../components/carousel/Testimonial";
+import { StyledCarouselWrapper, StyledTitle, StyledSubtitle } from '../../components/carousel/StyleCarosel';
 import { Modal } from "../../components/modal/Modal";
 import {
   Card,
@@ -15,6 +17,7 @@ import Card1 from "../../assets/img/card1.png";
 import Card2 from "../../assets/img/card2.png";
 import Card3 from "../../assets/img/card3.png";
 import { Menu } from "../../components/menu/Menu";
+
 
 const modalTexts = {
   "Conteudo do primeiro modal": "O atendimento psicológico online tem se tornado cada vez mais popular e acessível, permitindo que pessoas de diferentes lugares do mundo tenham acesso aos serviços de um psicólogo qualificado sem precisar sair de casa. E aqui, podemos afirmar que temos o melhor atendimento psicológico online. Ao optar por um atendimento psicológico online, você pode ter acesso a uma série de benefícios, como a conveniência e a flexibilidade de escolher o horário mais adequado para as suas sessões, bem como a privacidade e o anonimato para discutir questões delicadas e pessoais.",
@@ -42,6 +45,7 @@ const Home: React.FC = () => {
   const handleModalClose = () => {
     setIsModalOpen(false);
   };
+  
 
   return (
     <>
@@ -91,11 +95,9 @@ const Home: React.FC = () => {
             content={modalContent}
           ></Modal>
         )}
-        <CarrouselContainer>
-          <TestimonialCard>
-          <Carousel />
-          </TestimonialCard>
-        </CarrouselContainer>
+        <StyledCarouselWrapper>
+          <Carousel testimonials={testimonials} />
+        </StyledCarouselWrapper>
         <footer
           style={{
             display: "flex",

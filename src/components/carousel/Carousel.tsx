@@ -1,61 +1,84 @@
-import React, { useState } from 'react';
-import { Testimonial, testimonials } from './Testimonial';
+import React, { FC, useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { Testimonial } from './Testimonial';
+import { StyledCarouselWrapper, StyledTitle, StyledSubtitle } from './StyleCarosel'
 
-const Carousel: React.FC = () => {
+interface CarouselProps {
+  testimonials: Testimonial[];
+  interval?: number;
+}
+
+interface CardProps {
+  isActive: boolean;
+}
+
+const StyledCarousel = styled.ul`
+  display: flex;
+  align-items: center;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  height: 220px;
+`;
+
+const StyledCard = styled.li<CardProps>`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  opacity: ${props => props.isActive ? 1 : 0};
+  transition: opacity 0.5s ease-in-out;
+`;
+
+const StyledAvatar = styled.img`
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+`;
+
+const StyledName = styled.h3`
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+`;
+
+const StyledText = styled.p`
+  font-size: 1rem;
+  text-align: center;
+`;
+
+const Carousel: React.FC<CarouselProps> = ({ testimonials }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const handlePrevClick = () => {
-    setActiveIndex((prevIndex) =>
-      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
-    );
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex(activeIndex => (activeIndex + 1) % testimonials.length);
+    }, 5000);
 
-  const handleNextClick = () => {
-    setActiveIndex((prevIndex) =>
-      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
-    );
+    return () => clearInterval(interval);
+  }, [testimonials]);
+
+  const handleMouseEnter = () => clearInterval(interval);
+
+  const handleMouseLeave = () => {
+    const interval = setInterval(() => {
+      setActiveIndex(activeIndex => (activeIndex + 5) % testimonials.length);
+    }, 5000);
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        width: '250px',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        textAlign: 'center',
-        padding: '10px',
-      }}
-    >
-      <h2>Depoimentos</h2>
-
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <button onClick={handlePrevClick}>Anterior</button>
-
-        <div
-          style={{
-            backgroundImage: `url(${testimonials[activeIndex].avatar})`,
-            backgroundSize: 'cover',
-            height: '100px',
-            width: '100px',
-            borderRadius: '50%',
-          }}
-        />
-
-        <button onClick={handleNextClick}>Próximo</button>
-      </div>
-
-      <h3>{testimonials[activeIndex].name}</h3>
-      <p>{testimonials[activeIndex].text}</p>
-    </div>
+    <StyledCarousel onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      {testimonials.map((testimonial, index) => (
+        <StyledCard key={index} isActive={index === activeIndex}>
+          <StyledAvatar src={testimonial.avatar} alt={`Foto de ${testimonial.name}`} />
+          <StyledName>{testimonial.name}</StyledName>
+          <StyledText>{testimonial.text}</StyledText>
+        </StyledCard>
+      ))}
+    </StyledCarousel>
   );
 };
 
-export { Carousel };
+export default Carousel;

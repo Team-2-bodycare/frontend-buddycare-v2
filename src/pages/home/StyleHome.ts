@@ -117,7 +117,7 @@ export const TestimonialCard = styled.div`
   }
 
   & > h3 {
-    margin: 16px;
+    margin: 20px;
     font-size: 20px;
     font-weight: bold;
     color: #333;
