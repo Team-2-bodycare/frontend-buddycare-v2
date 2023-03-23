@@ -1,14 +1,10 @@
 import React, { useState } from "react";
-import Carousel from "../../components/carousel/Carousel";
-import { testimonials } from "../../components/carousel/Testimonial";
-import { StyledCarouselWrapper, StyledTitle, StyledSubtitle } from '../../components/carousel/StyleCarosel';
 import { Modal } from "../../components/modal/Modal";
 import {
   Card,
   CardGrid,
-  CarrouselContainer,
   Header,
-  TestimonialCard,
+  StyleButtton,
   TitleCard,
 } from "./StyleHome";
 
@@ -17,6 +13,8 @@ import Card1 from "../../assets/img/card1.png";
 import Card2 from "../../assets/img/card2.png";
 import Card3 from "../../assets/img/card3.png";
 import { Menu } from "../../components/menu/Menu";
+import { Footer } from "../../components/footer/Footer";
+import { ButtonWhatsap } from "../../components/buttonWhatsap/ButtonWhatsap";
 
 
 const modalTexts = {
@@ -45,7 +43,7 @@ const Home: React.FC = () => {
   const handleModalClose = () => {
     setIsModalOpen(false);
   };
-  
+
 
   return (
     <>
@@ -95,22 +93,11 @@ const Home: React.FC = () => {
             content={modalContent}
           ></Modal>
         )}
-        <StyledCarouselWrapper>
-          <Carousel testimonials={testimonials} />
-        </StyledCarouselWrapper>
-        <footer
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          {developers.map((dev) => (
-            <a key={dev.name} href={dev.link}>
-              {dev.name}
-            </a>
-          ))}
-        </footer>
+        <StyleButtton>
+        <ButtonWhatsap />
+        </StyleButtton>
+
+        <Footer />
       </div>
     </>
   );
