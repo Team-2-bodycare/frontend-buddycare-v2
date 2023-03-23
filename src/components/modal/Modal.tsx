@@ -9,6 +9,7 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, content, children }) => {
+
   if (!isOpen) return null;
 
   return (
@@ -36,14 +37,29 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, content, children
           overflowY: 'auto',
         }}
       >
-        <button onClick={onClose} style={{ float: 'right' }}>
-          X
+        <button onClick={onClose} style={{
+          float: 'right',
+          borderRadius: '20px',
+          backgroundColor: '#ff7f7f',
+          color: '#ffffff',
+          padding: '10px 20px',
+          transition: 'background-color 0.3s ease-in-out',
+          border: 'none'
+        }}>
+          Close
         </button>
-        <h2>{title}</h2>
-        <p>{content}</p>
+        <text
+          style={{
+            color: '#333',
+            fontSize: '18px',
+            lineHeight: '1.5'
+          }}
+        >
+          {content}
+        </text>
         {children}
       </div>
-    </div>
+    </div >
   );
 };
 

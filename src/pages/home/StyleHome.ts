@@ -5,32 +5,45 @@ export const Header = styled.header`
   background-image: url(${Imagem});
   background-size: cover;
   background-position: center;
-  width: 100%;
-  height: auto;
+  background-repeat: no-repeat;
+  height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   & > img {
-    width: 100%;
-
-    margin: 40px 0 20px 0;
+    height: 250px;
+    margin-bottom: 16px;
   }
-
   & > h1 {
     font-size: 30px;
     font-weight: bold;
-    text-align: center;
-    padding-bottom: 20px;
     color: white;
-    text-shadow: 1px 1px 1px black;
+    text-shadow: 1px 1px 1px  black;
+  }
 
-    @media screen and (max-width: 470px) {
-      font-size: 20px;
+  @media only screen and (max-width: 768px) {
+    height: 300px;
+    & > img {
+      height: 150px;
+    }
+    & > h1 {
+      font-size: 24px;
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    height: 200px;
+    & > img {
+      height: 100px;
+    }
+    & > h1 {
+      font-size: 18px;
     }
   }
 `;
+
+
 
 export const CardGrid = styled.div`
   width: 100%;
