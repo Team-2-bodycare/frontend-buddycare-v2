@@ -32,7 +32,6 @@ export function SignUp(props: ITypeUser) {
     password: "",
     isPsychologist: props.typeUser,
   });
-  console.log(values);
 
   const handleChangesValues = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValues((values: ISignUp) => ({
@@ -45,7 +44,6 @@ export function SignUp(props: ITypeUser) {
     e.preventDefault();
 
     const response: any = await SignUpService.Register(values);
-    console.log(response);
 
     if (!response) {
       swal({
