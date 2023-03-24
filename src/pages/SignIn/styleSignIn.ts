@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import background from "../../assets/img/background.jpg";
+import background from "../../assets/img/background2.png";
 
 export const SignInContainer = styled.div`
   background-image: url(${background});

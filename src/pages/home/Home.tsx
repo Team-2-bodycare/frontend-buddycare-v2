@@ -52,7 +52,6 @@ const Home: React.FC = () => {
       <div style={{ backgroundColor: '#bfbfbf' }}>
         <Header
           style={{
-            // backgroundSize: 'cover',
             height: '400px',
             display: 'flex',
             justifyContent: 'center',
