@@ -7,6 +7,7 @@ export const MenuContainer = styled.div`
   color: rgb(240, 240, 240);
   display: flex;
   width: 100%;
+  height: 50px;
   justify-content: center;
   align-items: center;
 `;
@@ -40,13 +41,15 @@ export const MenuDropDownContent = styled.div`
   background-color: rgba(46, 171, 244, 0.8);
   display: none;
   position: absolute;
-  min-width: 160px;
+  top: 44px;
+  min-width: 120px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 `;
 
 export const MenuDropDownLi = styled(MenuLi)`
   display: inline-block;
+  padding: 10px 15px;
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
   }
@@ -57,6 +60,7 @@ export const MenuDropDownLi = styled(MenuLi)`
 
 export const MenuA = styled.a`
   display: inline-block;
+  padding: 10px 15px;
   color: white;
   text-align: center;
   text-decoration: none;

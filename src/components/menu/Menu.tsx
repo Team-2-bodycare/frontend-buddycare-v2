@@ -17,10 +17,17 @@ export function Menu() {
     <MenuContainer>
       <MenuUl>
         <MenuDropDownLi>
-          <MenuDropbtn>Área do Psicólogo</MenuDropbtn>
+          <MenuDropbtn>Psicólogo</MenuDropbtn>
           <MenuDropDownContent>
             <MenuSubA onClick={() => navigate("/signin")} >Entrar</MenuSubA>
-            <MenuSubA onClick={() => navigate("/signup")} >Registrar-se</MenuSubA>
+            <MenuSubA onClick={() => navigate("signup-psychologist")} >Registrar-se</MenuSubA>
+          </MenuDropDownContent>
+        </MenuDropDownLi>
+        <MenuDropDownLi>
+          <MenuDropbtn>Paciente</MenuDropbtn>
+          <MenuDropDownContent>
+            <MenuSubA onClick={() => navigate("/signin")} >Entrar</MenuSubA>
+            <MenuSubA onClick={() => navigate("/signup-patient")} >Registrar-se</MenuSubA>
           </MenuDropDownContent>
         </MenuDropDownLi>
 
