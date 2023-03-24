@@ -62,17 +62,13 @@ export const MenuDropDownLi = styled(MenuLi)`
 
 export const MenuA = styled.a`
   display: inline-block;
-<<<<<<< HEAD
   padding: 10px 15px;
   color: white;
-=======
-  color: #cccccc;
->>>>>>> d6c3f6bb5e6e2d873699f6c5577d0a75bdafb2d5
   text-align: center;
   text-decoration: none;
 
   &:hover {
-  color: #ffffff;
+    color: #ffffff;
   }
 
   @media (max-width: 370px) {
@@ -87,7 +83,7 @@ export const MenuSubA = styled.a`
   text-decoration: none;
   display: block;
   text-align: left;
-  
+
   &:hover {
     color: #ffffff;
     background-color: rgba(0, 0, 0, 0.5);
