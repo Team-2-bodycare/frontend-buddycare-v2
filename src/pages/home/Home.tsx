@@ -4,6 +4,7 @@ import {
   Card,
   CardGrid,
   Header,
+  HomeContainer,
   StyleButtton,
   TitleCard,
 } from "./StyleHome";
@@ -49,7 +50,7 @@ const Home: React.FC = () => {
   return (
     <>
       <Menu />
-      <div style={{ backgroundColor: '#bfbfbf' }}>
+      <HomeContainer>
         <Header
           style={{
             // backgroundSize: 'cover',
@@ -101,7 +102,7 @@ const Home: React.FC = () => {
         <ContactForm />
 
         <Footer />
-      </div>
+      </HomeContainer>
     </>
   );
 };

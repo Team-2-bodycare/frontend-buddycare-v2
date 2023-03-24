@@ -1,6 +1,14 @@
 import styled from "styled-components";
 import Imagem from "../../assets/img/background.jpg";
 
+export const HomeContainer = styled.div`
+  background-color: #bfbfbf;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export const Header = styled.header`
   background-image: url(${Imagem});
   background-size: cover;
@@ -8,6 +16,7 @@ export const Header = styled.header`
   background-repeat: no-repeat;
   display: flex;
   width: 100%;
+  height: auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -21,6 +30,8 @@ export const Header = styled.header`
   & > h1 {
     font-size: 30px;
     font-weight: bold;
+    text-align: center;
+    padding: 10px;
     color: white;
     text-shadow: 1px 1px 1px black;
   }
