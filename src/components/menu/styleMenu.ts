@@ -41,7 +41,6 @@ export const MenuDropDownContent = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
   position: absolute;
-<<<<<<< HEAD
   top: 44px;
   min-width: 120px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -50,11 +49,8 @@ export const MenuDropDownContent = styled.div`
 
 export const MenuDropDownLi = styled(MenuLi)`
   display: inline-block;
-<<<<<<< HEAD
   padding: 10px 15px;
-=======
 
->>>>>>> d6c3f6bb5e6e2d873699f6c5577d0a75bdafb2d5
   &:hover {
     color: #ffffff;
     background-color: rgba(0, 0, 0, 0.1);
