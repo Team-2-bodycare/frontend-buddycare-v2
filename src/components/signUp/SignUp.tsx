@@ -29,6 +29,7 @@ export function SignUp(props: ITypeUser) {
     name: "",
     email: "",
     phone: "",
+    photo: "https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-High-Quality-Image.png",
     password: "",
     isPsychologist: props.typeUser,
   });
@@ -137,6 +138,12 @@ export function SignUp(props: ITypeUser) {
         <SignUpInput
           type="hidden"
           name="isPsychologist"
+          required
+          onChange={handleChangesValues}
+        />
+        <SignUpInput
+          type="hidden"
+          name="photo"
           required
           onChange={handleChangesValues}
         />
