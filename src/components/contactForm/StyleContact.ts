@@ -1,25 +1,40 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+
+export const ContactContainer = styled.div`
+  display: flex;
+  width: 100%;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+`;
 
 export const StyleH2 = styled.h2`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 2em;
+  padding: 10px;
+  text-align: center;
   color: #404040;
 `;
 
 export const Form = styled.form`
   display: flex;
-  width: 100%;
+  width: 500px;
+  justify-content: center;
   padding: 10px;
   flex-direction: column;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
   color: #404040;
+
+  @media (max-width: 520px) {
+    width: 95%;
+  }
 `;
 
 export const InputContainer = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: column;
   margin-top: 20px;
 
@@ -34,17 +49,18 @@ export const InputWrapper = styled.div`
   flex-direction: column;
   margin-bottom: 20px;
   width: 100%;
+  gap: 10px;
+`;
 
-  @media (min-width: 768px) {
-    margin-bottom: 0;
-    width: 48%;
-  }
+export const ContactLabel = styled.label`
+  width: 100%;
 `;
 
 export const Input = styled.input`
   background-color: rgba(240, 240, 240, 0.8);
-  padding: 10px;
-  margin: 10px;
+  width: 100%;
+  height: 40px;
+  padding-left: 10px;
   border-radius: 5px;
   border: 1px solid #ffffff;
   outline: none;
@@ -67,6 +83,7 @@ export const Textarea = styled.textarea`
   background-color: rgba(240, 240, 240, 0.8);
   width: 100%;
   height: 150px;
+  padding: 10px 10px;
   margin: 10px;
   margin-top: 10px;
   border-radius: 5px;
@@ -78,7 +95,7 @@ export const Textarea = styled.textarea`
 
 export const Button = styled.button`
   background-color: rgb(56, 201, 244);
-  width: 240px;
+  width: 230px;
   margin-top: 10px;
   padding: 10px;
   border-radius: 5px;

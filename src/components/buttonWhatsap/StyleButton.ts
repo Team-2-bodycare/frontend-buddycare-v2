@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const StyleButtton = styled.div`
 position:fixed;
-bottom:20px;
-right:50px;
+bottom:60px;
+right:10px;
 cursor:pointer;
 color: #ffffff;
 box-shadow: 5px 5px 5px #aaaaaa;
