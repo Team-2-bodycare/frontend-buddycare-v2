@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { Carousel } from "../../components/carousel/Carousel";
 import { Modal } from "../../components/modal/Modal";
 import {
   Card,
   CardGrid,
-  CarrouselContainer,
   Header,
-  TestimonialCard,
+  StyleButtton,
   TitleCard,
 } from "./StyleHome";
 
@@ -15,6 +13,10 @@ import Card1 from "../../assets/img/card1.png";
 import Card2 from "../../assets/img/card2.png";
 import Card3 from "../../assets/img/card3.png";
 import { Menu } from "../../components/menu/Menu";
+import { Footer } from "../../components/footer/Footer";
+import { ButtonWhatsap } from "../../components/buttonWhatsap/ButtonWhatsap";
+import { ContactForm } from "../../components/contactForm/ContactForm";
+
 
 const modalTexts = {
   "Conteudo do primeiro modal": "O atendimento psicológico online tem se tornado cada vez mais popular e acessível, permitindo que pessoas de diferentes lugares do mundo tenham acesso aos serviços de um psicólogo qualificado sem precisar sair de casa. E aqui, podemos afirmar que temos o melhor atendimento psicológico online. Ao optar por um atendimento psicológico online, você pode ter acesso a uma série de benefícios, como a conveniência e a flexibilidade de escolher o horário mais adequado para as suas sessões, bem como a privacidade e o anonimato para discutir questões delicadas e pessoais.",
@@ -42,6 +44,7 @@ const Home: React.FC = () => {
   const handleModalClose = () => {
     setIsModalOpen(false);
   };
+
 
   return (
     <>
@@ -91,24 +94,13 @@ const Home: React.FC = () => {
             content={modalContent}
           ></Modal>
         )}
-        <CarrouselContainer>
-          <TestimonialCard>
-          <Carousel />
-          </TestimonialCard>
-        </CarrouselContainer>
-        <footer
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          {developers.map((dev) => (
-            <a key={dev.name} href={dev.link}>
-              {dev.name}
-            </a>
-          ))}
-        </footer>
+        <StyleButtton>
+        <ButtonWhatsap />
+        </StyleButtton>
+
+        <ContactForm />
+
+        <Footer />
       </div>
     </>
   );

@@ -6,15 +6,16 @@ export const Header = styled.header`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   & > img {
     height: 250px;
-    margin-bottom: 16px;
+    margin: 60px 0 16px 0;
   }
+
   & > h1 {
     font-size: 30px;
     font-weight: bold;
@@ -24,9 +25,11 @@ export const Header = styled.header`
 
   @media only screen and (max-width: 768px) {
     height: 300px;
+
     & > img {
       height: 150px;
     }
+
     & > h1 {
       font-size: 24px;
     }
@@ -34,9 +37,11 @@ export const Header = styled.header`
 
   @media only screen and (max-width: 480px) {
     height: 200px;
+
     & > img {
       height: 100px;
     }
+    
     & > h1 {
       font-size: 18px;
     }
@@ -89,68 +94,10 @@ export const TitleCard = styled.h3`
   }
 `;
 
-export const CarrouselContainer =styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+export const StyleButtton = styled.div`
+display:flex;
+justify-content:flex-end;
+padding:5px;
+height: 100%;
 
-export const TestimonialCard = styled.div`
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-
-  & > img {
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
-    margin: 16px;
-    object-fit: cover;
-  }
-
-  & > p {
-    margin: 16px;
-    font-size: 18px;
-    color: #333;
-    text-align: justify;
-  }
-
-  & > h3 {
-    margin: 16px;
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
-  }
-`;
-
-export const TestimonialCarousel = styled.div`
-  display: flex;
-  overflow-x: auto;
-  margin-bottom: 32px;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-
-  & > ${TestimonialCard} {
-    flex: 0 0 auto;
-    scroll-snap-align: center;
-    margin: 0 16px;
-    width: 400px;
-  }
-`;
-
-export const Footer = styled.footer`
-  background-color: #333;
-  color: white;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 100px;
-
-  & > a {
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
-  }
 `;
