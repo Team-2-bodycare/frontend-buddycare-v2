@@ -51,10 +51,12 @@ export function SignIn() {
 
     const jwt = response.data.token;
     const type = response.data.user.isPsychologist;
+    const userId = response.data.user.id;
 
     if (jwt) {
       localStorage.setItem("jwt", jwt);
       localStorage.setItem("type", type);
+      localStorage.setItem("userId", userId);
 
       swal({
         title: "Bem vindo ao Buddy Care",
@@ -62,7 +64,7 @@ export function SignIn() {
         timer: 4000,
       });
 
-      if (values.isPsychologist === true) {
+      if (type === true) {
         navigate("/psychologist-profile");
       } else {
         navigate("/patient-Profile");
