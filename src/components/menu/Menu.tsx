@@ -30,13 +30,6 @@ export function Menu() {
             <MenuSubA onClick={() => navigate("/signup-patient")} >Registrar-se</MenuSubA>
           </MenuDropDownContent>
         </MenuDropDownLi>
-
-        <MenuLi>
-          <MenuA>Contato</MenuA>
-        </MenuLi>
-        <MenuLi>
-          <MenuA>Sobre</MenuA>
-        </MenuLi>
       </MenuUl>
     </MenuContainer>
   );

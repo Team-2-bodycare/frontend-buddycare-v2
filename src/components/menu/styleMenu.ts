@@ -3,17 +3,26 @@ import styled from "styled-components";
 export const MenuContainer = styled.div`
   position: fixed;
   background: rgba(0, 0, 0, 0.3);
-  padding: 20px;
-  color: #cccccc;
+  color: rgb(240, 240, 240);
   display: flex;
   width: 100%;
   height: 50px;
   justify-content: center;
   align-items: center;
+  z-index: 1;
+  /* position: fixed;
+  background: rgba(0, 0, 0, 0.3);
+  color: #cccccc;
+  display: flex;
+  width: 100%;
+  height: 50px;
+  justify-content: center;
+  align-items: center; */
 `;
 
 export const MenuUl = styled.ul`
   display: flex;
+  /* justify-content: center; */
   gap: 20px;
   list-style-type: none;
   margin: 0;

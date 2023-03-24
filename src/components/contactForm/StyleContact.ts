@@ -10,6 +10,8 @@ export const StyleH2 = styled.h2`
 
 export const Form = styled.form`
   display: flex;
+  width: 100%;
+  padding: 10px;
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
@@ -63,7 +65,9 @@ export const Input = styled.input`
 
 export const Textarea = styled.textarea`
   background-color: rgba(240, 240, 240, 0.8);
-  padding: 100px;
+  width: 100%;
+  height: 150px;
+  margin: 10px;
   margin-top: 10px;
   border-radius: 5px;
   border: 1px solid #ffffff;

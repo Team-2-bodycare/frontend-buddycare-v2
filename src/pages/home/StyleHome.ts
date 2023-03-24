@@ -7,11 +7,13 @@ export const Header = styled.header`
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   & > img {
+    width: 100%;
     height: 250px;
     margin: 60px 0 16px 0;
   }
@@ -20,7 +22,7 @@ export const Header = styled.header`
     font-size: 30px;
     font-weight: bold;
     color: white;
-    text-shadow: 1px 1px 1px  black;
+    text-shadow: 1px 1px 1px black;
   }
 
   @media only screen and (max-width: 768px) {
@@ -41,14 +43,12 @@ export const Header = styled.header`
     & > img {
       height: 100px;
     }
-    
+
     & > h1 {
       font-size: 18px;
     }
   }
 `;
-
-
 
 export const CardGrid = styled.div`
   width: 100%;
@@ -95,9 +95,8 @@ export const TitleCard = styled.h3`
 `;
 
 export const StyleButtton = styled.div`
-display:flex;
-justify-content:flex-end;
-padding:5px;
-height: 100%;
-
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px;
+  height: 100%;
 `;
