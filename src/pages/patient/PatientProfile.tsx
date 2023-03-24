@@ -1,7 +1,11 @@
+import { ListPsychologist } from "../../components/listPsychologist/listPsychologist";
+import { MenuPatient } from "../../components/menuPatient/MenuPatient";
+
 export function PatientProfile() {
   return (
     <>
-      <h1>Pagina principal do Paciente</h1>
+      <MenuPatient />
+      <ListPsychologist />
     </>
   );
 }
