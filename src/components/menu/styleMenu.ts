@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MenuContainer = styled.div`
   position: fixed;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.6);
   color: rgb(240, 240, 240);
   display: flex;
   width: 100%;
@@ -10,14 +10,6 @@ export const MenuContainer = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 1;
-  /* position: fixed;
-  background: rgba(0, 0, 0, 0.3);
-  color: #cccccc;
-  display: flex;
-  width: 100%;
-  height: 50px;
-  justify-content: center;
-  align-items: center; */
 `;
 
 export const MenuUl = styled.ul`
@@ -50,7 +42,7 @@ export const MenuDropDownContent = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
   position: absolute;
-  top: 44px;
+  top: 50px;
   min-width: 120px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -59,6 +51,7 @@ export const MenuDropDownContent = styled.div`
 export const MenuDropDownLi = styled(MenuLi)`
   display: inline-block;
   padding: 10px 15px;
+  margin-top: 10px;
 
   &:hover {
     color: #ffffff;
