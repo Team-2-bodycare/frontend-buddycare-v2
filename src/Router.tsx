@@ -17,10 +17,10 @@ export function Router() {
       <Route path="/signin" element={<SignIn />} />
       <Route path="/signup-psychologist" element={<SignUp typeUser={true} />} />
       <Route path="/signup-patient" element={<SignUp typeUser={false} />} />
-      <Route path="/" element={<ProtectedRoutes/>}>
+      <Route path="/" element={<ProtectedRoutes />}>
         <Route path="/patient-profile" element={<PatientProfile />} />
+        <Route path="/psychologist-profile" element={<PsychologistProfile />} />
       </Route>
-      <Route path="/psychologist-profile" element={<PsychologistProfile />} />
       <Route path="/list-psychologist" element={<ListPsychologist />} />
       <Route path="/detalhe/:id" element={<Detalhe />} />
     </Routes>
