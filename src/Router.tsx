@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { SignIn } from "./pages/signIn/SignIn";
+import { SignIn } from "./pages/SignIn/SignIn";
 import { SignUp } from "./components/signUp/SignUp";
 import Home from "./pages/home/Home";
 import { PsychologistProfile } from "./pages/PsychologistProfile/PsychologistProfile";
@@ -7,6 +7,7 @@ import { PatientProfile } from "./pages/patient/PatientProfile";
 import { ListPsychologist } from "./components/listPsychologist/listPsychologist";
 import { Detalhe } from "./pages/patient/details/Details";
 import { ProtectedRoutes } from "./components/protectedRoutes/ProtectedRoutes";
+
 
 export function Router() {
   return (
