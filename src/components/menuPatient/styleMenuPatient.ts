@@ -2,48 +2,60 @@ import styled from "styled-components";
 
 export const MenuContainer = styled.div`
   position: fixed;
-  background: rgba(46, 171, 244, 0.8);
+  background: rgba(0, 0, 0, 0.6);
   padding: 5px;
   color: rgb(240, 240, 240);
   display: flex;
+  gap: 10px;
   width: 100%;
   height: 70px;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   z-index: 1;
 `;
 
 export const PatientPhotoDefault = styled.img`
+  position: absolute;
+  left: 20px;
+  top: 10px;
   width: 50px;
   border-radius: 50px;
-  position: absolute;
-  right: 20px;
   cursor: pointer;
 `;
 
 export const PatientPhoto = styled.img`
-  position: absolute;
-  right: 40px;
-  top: 10px;
-  width: 60px;
+  /* position: absolute;
+  left: 20px;
+  top: 10px; */
+  width: 50px;
+  height: 50px;
+  margin: 13px 10px 10px 10px;
   border-radius: 50px;
-
   cursor: pointer;
 `;
 
+export const PatientName = styled.p`
+  /* position: absolute;
+  left: 100px;
+  top: 30px;
+  width: 200px; */
+  font-size: 18px;
+  text-align: left;
+`;
+
 export const MenuLi = styled.li`
-  position: absolute;
-  right: 0px;
-  top: 0px;
+  /* position: absolute;
+  left: 0px;
+  top: 0px; */
   float: left;
   cursor: pointer;
 `;
 
 export const MenuDropDownContent = styled.div`
-  background-color: rgba(46, 171, 244, 0.8);
+  background-color: rgba(0, 0, 0, 0.6);
   display: none;
   position: absolute;
-  right: 0;
+  left: 0;
   top: 70px;
   min-width: 145px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -52,10 +64,11 @@ export const MenuDropDownContent = styled.div`
 
 export const MenuDropDownLi = styled(MenuLi)`
   display: inline-block;
-  padding: 0;
-  &:hover {
+  flex-direction: row;
+  padding: 3px;
+  /* &:hover {
     background-color: rgba(0, 0, 0, 0.1);
-  }
+  } */
   &:hover ${MenuDropDownContent} {
     display: block;
   }
@@ -68,6 +81,7 @@ export const MenuSubA = styled.a`
   text-decoration: none;
   display: block;
   text-align: left;
+  border-radius: 10px;
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
   }

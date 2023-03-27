@@ -7,6 +7,7 @@ import {
   MenuDropDownContent,
   MenuDropDownLi,
   MenuSubA,
+  PatientName,
   PatientPhoto,
 } from "./styleMenuPatient";
 
@@ -17,6 +18,10 @@ export function MenuPatient() {
   const [patient, setPatient] = useState<IPatient>();
   useEffect(() => {
     patientById();
+
+    setInterval(() => {
+      patientById();
+    }, 10000);
   }, []);
 
   async function patientById() {
@@ -42,6 +47,7 @@ export function MenuPatient() {
           <MenuSubA onClick={() => logout()}>Sair</MenuSubA>
         </MenuDropDownContent>
       </MenuDropDownLi>
+      <PatientName>Olá, {patient?.name}</PatientName>
     </MenuContainer>
   );
 }
