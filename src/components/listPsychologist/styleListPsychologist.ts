@@ -6,9 +6,15 @@ export const ListContainer = styled.div`
   padding-top: 70px;
 `;
 
+export const ListNotExist = styled.h2`
+  color: red;
+`;
+
 export const ListCardGrid = styled.div`
   width: 100%;
   display: grid;
+  justify-items: center;
+  align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 10px;
   padding: 10px;
@@ -16,28 +22,28 @@ export const ListCardGrid = styled.div`
 `;
 
 export const ListCard = styled.div`
+  background: rgba(210, 210, 210, 0.3);
   display: flex;
   width: 100%;
+  max-width: 400px;
   height: auto;
   flex-direction: column;
   gap: 10px;
   padding: 10px;
-
   border-radius: 20px;
-  border: 1px solid #fff;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 2px 5px black;
+    backdrop-filter: blur(15px);
+    border: none;
   }
 `;
 
 export const ListPhoto = styled.img`
-  width: auto;
-  height: 250px;
+  width: 100%;
+  height: 400px;
   border-radius: 10px;
 `;
 

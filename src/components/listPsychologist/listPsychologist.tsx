@@ -3,6 +3,7 @@ import {
   ListCardGrid,
   ListContainer,
   ListName,
+  ListNotExist,
   ListPhoto,
   ListSpecialization,
 } from "./styleListPsychologist";
@@ -17,6 +18,10 @@ export function ListPsychologist() {
 
   useEffect(() => {
     loadPsychologists();
+
+    setInterval(() => {
+      loadPsychologists();
+    }, 10000);
   }, []);
 
   async function loadPsychologists() {
@@ -29,7 +34,7 @@ export function ListPsychologist() {
     <ListContainer>
       <ListCardGrid>
         {psychologists.map((psychologist) => {
-          return (
+          return psychologist.worker && psychologist ? (
             <ListCard
               onClick={() => navigate(`/detalhe/${psychologist.id}`)}
               key={psychologist.id}
@@ -40,6 +45,8 @@ export function ListPsychologist() {
                 {psychologist.worker.specialization}
               </ListSpecialization>
             </ListCard>
+          ) : (
+            <ListNotExist>Não existe psicólogos cadastrados</ListNotExist>
           );
         })}
       </ListCardGrid>
