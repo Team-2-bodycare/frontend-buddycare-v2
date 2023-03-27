@@ -22,12 +22,14 @@ export const SignInImgHome = styled.img`
 
 export const SignInForm = styled.form`
   width: 260px;
-  border-radius: 20px;
   border: none;
+  border-radius: 10px;
   padding: 0px 20px 0px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 2px 2px 5px black;
+  backdrop-filter: blur(15px);
 `;
 
 export const SignInLogo = styled.img`
@@ -37,7 +39,7 @@ export const SignInLogo = styled.img`
 
 export const SignInTitle = styled.h2`
   font-size: 18px;
-  color: white;
+  color: rgb(200, 200, 200);
 `;
 
 export const SignInInput = styled.input`
@@ -46,7 +48,7 @@ export const SignInInput = styled.input`
   padding: 10px;
   margin-top: 20px;
   border-radius: 5px;
-  border: 1px solid rgb(56, 201, 244);
+  border: 1px solid rgba(0, 0, 0, 0.5);
   outline: none;
   font-size: 14px;
   color: rgb(115, 115, 115);
@@ -55,7 +57,7 @@ export const SignInInput = styled.input`
   &:valid ~ span {
     transform: translateY(-20px);
     padding: 1px 5px 1px 5px;
-    background-color: rgb(56, 201, 244);
+    background-color: rgba(0, 0, 0, 0.6);
     border-radius: 3px;
     font-size: 14px;
     opacity: 1;
@@ -86,20 +88,20 @@ export const SignInSpanPassword = styled.span`
 `;
 
 export const SignInButton = styled.button`
-  background-color: rgb(56, 201, 244);
+  background-color: rgba(0, 0, 0, 0.5);
   width: 240px;
   margin-top: 10px;
   padding: 10px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  color: white;
+  color: rgb(200, 200, 200);
   font-size: 16px;
   font-weight: bold;
   transition: all 0.8s ease-out;
 
   &:hover {
-    background-color: rgb(46, 171, 244);
+    background-color: rgba(0, 0, 0, 0.6);
   }
 `;
 
