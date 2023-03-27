@@ -1,78 +1,72 @@
 import styled from "styled-components";
 
-export const MenuContainer = styled.div`
-  position: fixed;
-  background: rgba(46, 171, 244, 0.8);
-  padding: 5px;
-  color: rgb(240, 240, 240);
-  display: flex;
+export const PatientContainer = styled.div`
+  background: rgb(200, 200, 200);
   width: 100%;
-  height: 70px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 0 10px 0 10px;
+`;
+
+export const PPPsychologistContainer = styled.div`
+  width: 100%;
+  max-width: 240px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 1;
-`;
-
-export const PatientPhotoDefault = styled.img`
-  width: 50px;
-  border-radius: 50px;
-  position: absolute;
-  right: 20px;
-  cursor: pointer;
-`;
-
-export const PatientPhoto = styled.img`
-  position: absolute;
-  right: 40px;
-  top: 10px;
-  width: 60px;
-  border-radius: 50px;
-
-  cursor: pointer;
-`;
-
-export const MenuLi = styled.li`
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  float: left;
-  cursor: pointer;
-`;
-
-export const MenuDropDownContent = styled.div`
-  background-color: rgba(46, 171, 244, 0.8);
-  display: none;
-  position: absolute;
-  right: 0;
-  top: 70px;
-  min-width: 145px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  /* margin: 100px 10px 30px 10px; */
+  border: none;
   border-radius: 10px;
+  box-shadow: 2px 2px 5px black;
 `;
 
-export const MenuDropDownLi = styled(MenuLi)`
-  display: inline-block;
-  padding: 0;
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-  &:hover ${MenuDropDownContent} {
-    display: block;
+export const PPContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  gap: 10px;
+  padding: 10px;
+  margin: 100px 10px 30px 10px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px black;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
   }
 `;
 
-export const MenuSubA = styled.a`
-  width: auto;
-  color: rgb(240, 240, 240);
-  padding: 10px 15px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
+export const PPName = styled.p`
+  font-weight: bold;
+  color: rgb(116, 116, 116);
+  margin-top: 10px;
+`;
 
-  @media (max-width: 370px) {
-    font-size: 15px;
+export const PPPhoto = styled.img`
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+`;
+
+export const PPButton = styled.button`
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 220px;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  color: rgb(200, 200, 200);
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.8s ease-out;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.6);
   }
 `;
