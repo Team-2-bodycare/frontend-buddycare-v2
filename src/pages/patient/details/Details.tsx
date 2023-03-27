@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { MenuPatient } from "../../../components/menuPatient/MenuPatient";
 import { IPatientPsychologist } from "../../../interfaces/IPatientPsychologist";
 import { IPsychologists } from "../../../interfaces/IPsychologists";
@@ -19,6 +19,7 @@ import {
 } from "./styleDetails";
 
 export function Detalhe() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [psychologist, setPsychologist] = useState<IPsychologists>();
 
@@ -40,11 +41,14 @@ export function Detalhe() {
       userId: userID,
       psychologistId: `${id}`,
     };
-    console.log(data);
   }
 
   const postPatientPsychologist = async () => {
     await createPatientPsychologist(data);
+
+    setTimeout(() => {
+      navigate("/patient-profile");
+    }, 3000);
   };
 
   return (

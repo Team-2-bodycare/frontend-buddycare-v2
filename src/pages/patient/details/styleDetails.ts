@@ -1,19 +1,22 @@
 import styled from "styled-components";
 
 export const DetailsMain = styled.div`
+  background: rgb(200, 200, 200);
   display: flex;
+  justify-content: center;
   width: 100%;
-  padding: 100px 10px;
 `;
 
 export const DetailsContainer = styled.div`
   display: flex;
   width: 100%;
+  max-width: 500px;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border: 1px solid rgb(56, 201, 244);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 10px;
+  margin: 100px 10px 30px 10px;
 
   @media (max-width: 600px) {
     flex-direction: column;
@@ -46,8 +49,6 @@ export const DetailsDiv2 = styled.div`
 export const DetailsPhoto = styled.img`
   width: 100%;
   height: auto;
-
-  margin: 20px;
   border-radius: 10px;
 `;
 
@@ -77,7 +78,7 @@ export const DetailsCrp = styled.p`
 `;
 
 export const DetailsButton = styled.button`
-  background-color: rgb(56, 201, 244);
+  background-color: rgba(0, 0, 0, 0.5);
   width: 50%;
   margin-top: 10px;
   padding: 10px;
@@ -90,6 +91,6 @@ export const DetailsButton = styled.button`
   transition: all 0.8s ease-out;
 
   &:hover {
-    background-color: rgb(46, 171, 244);
+    background-color: rgba(0, 0, 0, 0.6);
   }
 `;
