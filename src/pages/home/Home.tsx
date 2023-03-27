@@ -53,7 +53,6 @@ const Home: React.FC = () => {
       <HomeContainer>
         <Header
           style={{
-            // backgroundSize: 'cover',
             height: '400px',
             display: 'flex',
             justifyContent: 'center',

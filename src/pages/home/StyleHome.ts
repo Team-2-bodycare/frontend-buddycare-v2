@@ -22,8 +22,8 @@ export const Header = styled.header`
   align-items: center;
 
   & > img {
-    width: 100%;
-    height: 250px;
+    width: 70%;
+    height: 230px;
     margin: 60px 0 16px 0;
   }
 
