@@ -8,7 +8,6 @@ import { ListPsychologist } from "./components/listPsychologist/listPsychologist
 import { Detalhe } from "./pages/patient/details/Details";
 import { ProtectedRoutes } from "./components/protectedRoutes/ProtectedRoutes";
 
-
 export function Router() {
   return (
     <Routes>
@@ -20,9 +19,9 @@ export function Router() {
       <Route path="/" element={<ProtectedRoutes />}>
         <Route path="/patient-profile" element={<PatientProfile />} />
         <Route path="/psychologist-profile" element={<PsychologistProfile />} />
+        <Route path="/list-psychologist" element={<ListPsychologist />} />
+        <Route path="/detalhe/:id" element={<Detalhe />} />
       </Route>
-      <Route path="/list-psychologist" element={<ListPsychologist />} />
-      <Route path="/detalhe/:id" element={<Detalhe />} />
     </Routes>
   );
 }
