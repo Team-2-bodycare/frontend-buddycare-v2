@@ -12,7 +12,7 @@ export const StyleH2 = styled.h2`
   display: flex;
   padding: 10px;
   text-align: center;
-  color: #404040;
+  color: rgb(115, 115, 115);
 `;
 
 export const Form = styled.form`
@@ -23,9 +23,11 @@ export const Form = styled.form`
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: none;
   border-radius: 10px;
   color: #404040;
+  box-shadow: 2px 2px 5px black;
+  backdrop-filter: blur(15px);
 
   @media (max-width: 520px) {
     width: 95%;
@@ -54,6 +56,7 @@ export const InputWrapper = styled.div`
 
 export const ContactLabel = styled.label`
   width: 100%;
+  color: rgb(115, 115, 115);
 `;
 
 export const Input = styled.input`
@@ -62,7 +65,7 @@ export const Input = styled.input`
   height: 40px;
   padding-left: 10px;
   border-radius: 5px;
-  border: 1px solid #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   outline: none;
   font-size: 14px;
   color: rgb(115, 115, 115);
@@ -87,14 +90,14 @@ export const Textarea = styled.textarea`
   margin: 10px;
   margin-top: 10px;
   border-radius: 5px;
-  border: 1px solid #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   outline: none;
   font-size: 14px;
   color: rgb(115, 115, 115);
 `;
 
 export const Button = styled.button`
-  background-color: rgb(56, 201, 244);
+  background-color: rgba(0, 0, 0, 0.5);
   width: 230px;
   margin-top: 10px;
   padding: 10px;
@@ -107,6 +110,6 @@ export const Button = styled.button`
   transition: all 0.8s ease-out;
 
   &:hover {
-    background-color: rgb(46, 171, 244);
+    background-color: rgba(0, 0, 0, 0.6);
   }
 `;
