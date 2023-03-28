@@ -1,17 +1,32 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { IPatient } from "../../interfaces/IPatient";
-import { getByIdPatient } from "../../services/patient/ByIdPatient";
 import {
   MenuContainer,
   MenuDropDownContent,
   MenuDropDownLi,
   MenuSubA,
-  PatientName,
-  PatientPhoto,
-} from "./styleMenuPatient";
+  UserName,
+  UserPhoto,
+} from "./styleMenuUser";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { IPatient } from "../../interfaces/IPatient";
+import { getByIdPatient } from "../../services/patient/ByIdPatient";
+import { getByIdPsychologist } from "../../services/psychologist/ByIdPsychologist";
 
-export function MenuPatient() {
+export function MenuUser() {
+  const [psychologist, setPsychologist] = useState<IPatient>();
+  useEffect(() => {
+    psychologistById();
+
+    setInterval(() => {
+      psychologistById();
+    }, 10000);
+  }, []);
+
+  async function psychologistById() {
+    const response = await getByIdPsychologist(`${userId}`);
+    setPsychologist(response.data);
+  }
+
   const navigate = useNavigate();
   const userId = localStorage.getItem("userId");
 
@@ -39,7 +54,7 @@ export function MenuPatient() {
   return (
     <MenuContainer>
       <MenuDropDownLi>
-        <PatientPhoto src={patient?.photo} />
+        <UserPhoto src={patient?.photo} />
         <MenuDropDownContent>
           <MenuSubA onClick={() => navigate("/signin")}>Editar Perfil</MenuSubA>
           <MenuSubA onClick={() => navigate("/signin")}>Meu psicólogo</MenuSubA>
@@ -47,7 +62,11 @@ export function MenuPatient() {
           <MenuSubA onClick={() => logout()}>Sair</MenuSubA>
         </MenuDropDownContent>
       </MenuDropDownLi>
-      <PatientName>Olá, {patient?.name}</PatientName>
+      {patient?.isPsychologist === false ? (
+        <UserName>Olá, {patient?.name}</UserName>
+      ) : (
+        <UserName>Olá, {psychologist?.name}</UserName>
+      )}
     </MenuContainer>
   );
 }

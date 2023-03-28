@@ -7,6 +7,7 @@ import { getByIdPsychologist, updatePsychologist } from "../../services/psycholo
 import { IPsychologistsProfile } from "../../interfaces/IPsychologistsProfile";
 import { PsychologistProfileModal } from "../../components/modal/PsychologistProfileModal";
 import Imge from "../../assets/img/vatarProfile.png";
+import { MenuUser } from "../../components/menuUser/MenuUser";
 
 export function PsychologistProfile() {
   const { id } = useParams<{ id?: string }>();
@@ -61,6 +62,7 @@ export function PsychologistProfile() {
 
   return (
     <>
+      <MenuUser />
       <Body>
         <Div1>
           <h1>div 1</h1>

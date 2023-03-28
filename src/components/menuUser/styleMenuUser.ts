@@ -14,7 +14,7 @@ export const MenuContainer = styled.div`
   z-index: 1;
 `;
 
-export const PatientPhotoDefault = styled.img`
+export const UserPhotoDefault = styled.img`
   position: absolute;
   left: 20px;
   top: 10px;
@@ -23,7 +23,7 @@ export const PatientPhotoDefault = styled.img`
   cursor: pointer;
 `;
 
-export const PatientPhoto = styled.img`
+export const UserPhoto = styled.img`
   /* position: absolute;
   left: 20px;
   top: 10px; */
@@ -34,7 +34,7 @@ export const PatientPhoto = styled.img`
   cursor: pointer;
 `;
 
-export const PatientName = styled.p`
+export const UserName = styled.p`
   /* position: absolute;
   left: 100px;
   top: 30px;

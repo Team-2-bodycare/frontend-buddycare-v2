@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { MenuPatient } from "../../../components/menuPatient/MenuPatient";
+import { MenuUser } from "../../../components/menuUser/MenuUser";
 import { IPatientPsychologist } from "../../../interfaces/IPatientPsychologist";
 import { IPsychologists } from "../../../interfaces/IPsychologists";
 import { createPatientPsychologist } from "../../../services/patientPsychologist/PatientPsychologistId";
@@ -53,7 +53,7 @@ export function Detalhe() {
 
   return (
     <>
-      <MenuPatient />
+      <MenuUser />
       <DetailsMain>
         <DetailsContainer key={psychologist?.id}>
           <DetailsDiv1>
