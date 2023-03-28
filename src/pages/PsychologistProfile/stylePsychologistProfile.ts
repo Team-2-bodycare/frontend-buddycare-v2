@@ -2,12 +2,12 @@ import styled from "styled-components";
 import Background from "../../assets/img/background2.png";
 
 export const Body = styled.div`
-  position: relative;
   background-image: url(${Background});
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   display: flex;
+  padding-top: 50px;
   height: 100vh;
   flex-wrap: wrap;
 `;

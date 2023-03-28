@@ -3,6 +3,7 @@ import { Body, Div1, Div2, Div3 } from "./stylePsychologistProfile";
 import { useNavigate } from "react-router-dom";
 import { IUser } from "../../interfaces/IPsychologistsProfile";
 import { getByIdUser } from "../../services/users/GetByIdUser";
+import { MenuUser } from "../../components/menuUser/MenuUser";
 
 export function PsychologistProfile() {
   const [userData, setUserData] = useState<IUser>();
@@ -31,6 +32,7 @@ export function PsychologistProfile() {
 
   return (
     <>
+      <MenuUser />
       <Body>
         <Div1>
           <h1>div 1</h1>
