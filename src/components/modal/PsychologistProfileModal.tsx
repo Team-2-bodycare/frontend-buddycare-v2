@@ -1,67 +1,70 @@
-import { useRef } from "react";
-import { Modal, ModalContent, ModalFooter, ModalTitle } from "./style/StyleModalPsychologist";
+import { useState } from "react";
+import Modal from "react-modal";
 import { IPsychologistsProfile } from "../../interfaces/IPsychologistsProfile";
-import { updatePsychologist } from "../../services/psychologist/GetByIdPsychologist";
+import { postPsychologist } from "../../services/psychologist/GetByIdPsychologist";
 
+interface PsychologistProfileModalProps {
+  isOpen: boolean;
+  closeModal: () => void;
+  onSubmit: (data: Partial<IPsychologistsProfile>) => Promise<void>;
+}
 
-type Props = {
-  show: boolean;
-  setShow: React.Dispatch<React.SetStateAction<boolean>>;
-  onSave: (updatedData: Partial<IPsychologistsProfile>) => Promise<void>;
-  user: IPsychologistsProfile;
-  handleClose?: () => void;
-};
+interface PsychologistFormData {
+  crp: string;
+  specialization: string;
+  summary: string;
+  userId: string;
+}
 
+export function PsychologistProfileModal({ isOpen, closeModal, onSubmit }: PsychologistProfileModalProps) {
+  const [psychologistData, setPsychologistData] = useState<PsychologistFormData>({
+    crp: "",
+    specialization: "",
+    summary: "",
+    userId: localStorage.getItem("userId") || "",
+  });
 
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
+    setPsychologistData({ ...psychologistData, [name]: value });
+  };
 
-export function PsychologistProfileModal({ show = false, setShow, onSave, user }: Props) {
-  const crpRef = useRef<HTMLInputElement>(null);
-  const specializationRef = useRef<HTMLInputElement>(null);
-  const summaryRef = useRef<HTMLTextAreaElement>(null);
-
-  const handleClose = () => setShow(false);
-
-  const handleSave = async () => {
-    const newData = {
-      worker: {
-        crp: crpRef.current?.value,
-        specialization: specializationRef.current?.value,
-        summary: summaryRef.current?.value
-      }
-    };
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
   
-    await updatePsychologist(user.id, newData as Partial<IPsychologistsProfile>);
-    onSave(user);
-    handleClose();
+    try {
+      const { userId, ...data } = psychologistData; // extrai userId e o restante dos dados
+      await postPsychologist(userId, data); // passa apenas o userId como argumento para a função
+      closeModal();
+    } catch (error) {
+      console.log(error);
+    }
   };
   
-  
+  Modal.setAppElement("#root"); // movido para dentro do componente
 
   return (
-    <Modal as="div" onClick={handleClose}>
-      <ModalContent onClick={(e) => e.stopPropagation()}>
-        <ModalTitle>Editar informações</ModalTitle>
-        <label>
-          CRP:
-          <input type="text" ref={crpRef} defaultValue={user.worker.crp} />
-        </label>
-        <label>
-          Especialização:
-          <input type="text" ref={specializationRef} defaultValue={user.worker.specialization} />
-        </label>
-        <label>
-          Resumo:
-          <textarea rows={4} ref={summaryRef} defaultValue={user.worker.summary}></textarea>
-        </label>
-        <label>
-          Foto:
-          <input type="file" />
-        </label>
-        <ModalFooter>
-          <button onClick={handleClose}>Cancelar</button>
-          <button onClick={handleSave}>Salvar</button>
-        </ModalFooter>
-      </ModalContent>
+    <Modal isOpen={isOpen} onRequestClose={closeModal} overlayClassName="react-modal-overlay" className="react-modal-content">
+      <h2>Atualize seus dados</h2>
+
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>CRP</label>
+          <input type="text" name="crp" value={psychologistData.crp} onChange={handleInputChange} />
+        </div>
+
+        <div>
+          <label>Especialização</label>
+          <input type="text" name="specialization" value={psychologistData.specialization} onChange={handleInputChange} />
+        </div>
+
+        <div>
+          <label>Resumo</label>
+          <textarea name="summary" value={psychologistData.summary} onChange={handleInputChange} />
+        </div>
+
+        <button type="submit">Salvar</button>
+      </form>
     </Modal>
   );
 }

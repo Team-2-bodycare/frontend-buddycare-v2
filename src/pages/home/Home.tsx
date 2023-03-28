@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal } from "../../components/modal/Modal";
 import {
   Card,
@@ -36,6 +36,16 @@ const developers = [
 const Home: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState("");
+
+  const clearLocalStorage = () => {
+    localStorage.removeItem("token");
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      clearLocalStorage();
+    }
+  }, []);
 
   const handleCardClick = (content: keyof typeof modalTexts) => {
     setIsModalOpen(true);

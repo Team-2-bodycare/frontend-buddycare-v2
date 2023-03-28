@@ -27,6 +27,7 @@
     "react-dom": "^18.2.0",
     "react-google-calendar-api": "^2.2.2",
     "react-google-calendar-events": "^0.0.1-security",
+    "react-modal": "^3.16.1",
     "react-router-dom": "^6.9.0",
     "react-text-mask": "^5.5.0",
     "styled-components": "^5.3.9",
@@ -35,6 +36,7 @@
   "devDependencies": {
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
+    "@types/react-modal": "^3.13.1",
     "@types/react-text-mask": "^5.4.11",
     "@types/styled-components": "^5.1.26",
     "@vitejs/plugin-react-swc": "^3.0.0",
