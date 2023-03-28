@@ -36,6 +36,7 @@ export function PsychologistProfileModal({ isOpen, closeModal, onSubmit }: Psych
       await postPsychologist(psychologistData); // Alterado para chamar a função postPsychologist
       await onSubmit(psychologistData);
       closeModal();
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
