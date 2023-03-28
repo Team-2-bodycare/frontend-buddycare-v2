@@ -3,11 +3,60 @@ import styled from "styled-components";
 export const PatientContainer = styled.div`
   background: rgb(200, 200, 200);
   width: 100%;
-  height: 100vh;
   display: flex;
   justify-content: center;
   padding: 0 10px 0 10px;
 `;
+
+export const PPContainer = styled.div`
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 10px;
+  margin: 100px 10px 10px 10px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px black;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+export const PatientNotePsychologistContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  @media (max-width: 600px) {
+    width: 100%;
+    /* flex-direction: row; */
+  }
+`;
+
+export const PatientOptions = styled.div`
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+
+  @media (max-width: 600px) {
+    max-width: 100%;
+  }
+`;
+
+
+
+// Estilização do perfil do Psicólogo 
 
 export const PPPsychologistContainer = styled.div`
   width: 100%;
@@ -22,22 +71,9 @@ export const PPPsychologistContainer = styled.div`
   border: none;
   border-radius: 10px;
   box-shadow: 2px 2px 5px black;
-`;
-
-export const PPContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  /* align-items: center; */
-  gap: 10px;
-  padding: 10px;
-  margin: 100px 10px 30px 10px;
-  border: none;
-  border-radius: 10px;
-  box-shadow: 2px 2px 5px black;
 
   @media (max-width: 600px) {
-    flex-direction: column;
+    max-width: 100%;
   }
 `;
 
