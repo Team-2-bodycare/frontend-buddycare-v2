@@ -12,7 +12,7 @@ import { IPatient } from "../../interfaces/IPatient";
 import { getByIdPatient } from "../../services/patient/ByIdPatient";
 import { getByIdPsychologist } from "../../services/psychologist/ByIdPsychologist";
 
-export function MenuPatient() {
+export function MenuUser() {
   const [psychologist, setPsychologist] = useState<IPatient>();
   useEffect(() => {
     psychologistById();

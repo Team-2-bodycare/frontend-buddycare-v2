@@ -11,12 +11,12 @@ import {
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ListPsychologist } from "../../components/listPsychologist/listPsychologist";
-import { MenuPatient } from "../../components/menuUser/MenuUser";
 import { Payment } from "../../components/payment/Payment";
 import { IPatient } from "../../interfaces/IPatient";
 import { getByIdPatient } from "../../services/patient/ByIdPatient";
 import { removePatientPsychologist } from "../../services/patientPsychologist/RemovePatientPsychologist";
 import { Note } from "../../components/note/Note";
+import { MenuUser } from "../../components/menuUser/MenuUser";
 
 export function PatientProfile() {
   const navigate = useNavigate();
@@ -41,7 +41,7 @@ export function PatientProfile() {
 
   return (
     <PatientContainer>
-      <MenuPatient />
+      <MenuUser />
       {patient?.psychologist === null ? (
         <ListPsychologist />
       ) : (
