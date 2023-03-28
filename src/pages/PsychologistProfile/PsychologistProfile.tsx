@@ -1,66 +1,33 @@
 import { useEffect, useState } from "react";
-import jwt_decode from "jwt-decode";
 import { Body, Div1, Div2, Div3 } from "./stylePsychologistProfile";
 import { useNavigate } from "react-router-dom";
-
-interface PsychologistData {
-  id: string;
-  name: string;
-  photo: string;
-  worker: {
-    crp: string;
-    specialization: string;
-    summary: string;
-  };
-}
+import { IUser } from "../../interfaces/IPsychologistsProfile";
+import { getByIdUser } from "../../services/users/GetByIdUser";
 
 export function PsychologistProfile() {
-  const [psychologistData, setPsychologistData] = useState<PsychologistData>();
-
+  const [userData, setUserData] = useState<IUser>();
+  const [error, setError] = useState<string>("");
   const navigate = useNavigate()
+
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+      const fetchData = async () => {
+        try {
+          const response = await getByIdUser(userId);
+          setUserData(response.data);
+        } catch (error) {
+          setError("Erro ao buscar os dados do usuário.");
+        }
+      };
+      fetchData();
+    }
+  }, []);
 
   const handleLogout = () => {
     localStorage.clear(); // limpa o localStorage
-    localStorage.removeItem("user"); // Remove o usuário do localStorage
-    localStorage.removeItem("token"); // Remove o token do localStorage
     navigate("/home"); // Redireciona o usuário para a página /home
   };
-
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-
-  //   if (token) {
-  //     try {
-  //       const decodedToken: any = jwt_decode(token);
-  //       const userId = decodedToken.userId;
-
-  //       fetch(`/api/psychologist/${userId}`, {
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       })
-  //         .then((response) => {
-  //           if (!response.ok) {
-  //             throw new Error("Erro ao buscar dados do psicólogo");
-  //           }
-  //           return response.json();
-  //         })
-  //         .then((data) => {
-  //           setPsychologistData(data);
-  //         })
-  //         .catch((error) => {
-  //           console.error(error);
-  //           navigate("/home");
-  //         });
-  //     } catch (error) {
-  //       console.error(error);
-  //       navigate("/home");
-  //     }
-  //   } else {
-  //     navigate("/home");
-  //   }
-  // }, []);
-
 
   return (
     <>
@@ -70,13 +37,15 @@ export function PsychologistProfile() {
         </Div1>
 
         <Div2>
-          {psychologistData ? (
+          {userData ? (
             <>
-              <h2>{psychologistData.name}</h2>
-              <p>{psychologistData.worker.crp}</p>
-              <p>{psychologistData.worker.specialization}</p>
-              <p>{psychologistData.worker.summary}</p>
+              <h2>{userData.name}</h2>
+              <p>{userData.worker.crp}</p>
+              <p>{userData.worker.specialization}</p>
+              <p>{userData.worker.summary}</p>
             </>
+          ) : error ? (
+            <p>{error}</p>
           ) : (
             <p>Carregando dados do psicólogo...</p>
           )}
