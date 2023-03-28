@@ -23,6 +23,11 @@ export interface IUser {
   email: string;
   phone: string;
   photo: string;
+  worker?: {
+    crp: string;
+    specialization: string;
+    summary: string;
+  };
 }
 
   

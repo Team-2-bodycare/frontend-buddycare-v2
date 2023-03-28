@@ -12,12 +12,15 @@ export const getByIdPsychologist = async (id: string) => {
   return response;
 };
 
-export async function postPsychologist(userId: string, data: PsychologistFormData) {
-  const response = await Api.post(`/psychologist`, { userId, ...data });
+export const postPsychologist = async (data: PsychologistFormData) => {
+  const response = await Api.post(`/psychologist`, data);
+  return response;
+};;
+
+export const updatePsychologist = async (id: string, data: Partial<IPsychologistsProfile>) => {
+  const psychologist = await getByIdPsychologist(id);
+  const updatedPsychologist = { ...psychologist.data, ...data };
+  const response = await Api.patch(`/psychologist/${id}`, updatedPsychologist);
   return response;
 };
 
-export const updatePsychologist = async (id: string, data: Partial<IPsychologistsProfile>) => {
-  const response = await Api.patch(`/psychologist/${id}`, data);
-  return response;
-};
