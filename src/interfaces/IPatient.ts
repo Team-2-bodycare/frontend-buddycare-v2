@@ -4,6 +4,7 @@ export interface IPatient {
   email: string;
   phone: string;
   photo: string;
+  isPsychologist: boolean;
   userId: string;
   psychologist: {
     psychologist: {
