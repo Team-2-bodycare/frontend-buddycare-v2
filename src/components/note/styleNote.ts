@@ -34,7 +34,6 @@ export const PatientComment = styled.div`
 `;
 
 export const NoteCommentCard = styled.div`
-  background: rgba(210, 210, 210, 0.3);
   display: flex;
   width: 100%;
   /* height: auto; */
@@ -44,7 +43,7 @@ export const NoteCommentCard = styled.div`
   margin: 5px;
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  border: none;
 `;
 
 // Fim do Get

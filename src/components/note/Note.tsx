@@ -82,31 +82,13 @@ export function Note() {
               <NoteCommentCard
                 key={noteComment.id}
                 style={{
-                  background: "rgba(0, 0, 0, 0.5)",
+                  background: "rgba(11, 35, 42, 0.7)",
                   color: "rgb(240, 240, 240)",
                 }}
               >
                 <p>{noteComment.note}</p>
                 <p>{patient?.name}</p>
-                {!userId ? (
-                  <div
-                    style={{
-                      background: "red",
-                      width: "10px",
-                      borderRadius: "50px",
-                      height: "10px",
-                    }}
-                  ></div>
-                ) : (
-                  <div
-                    style={{
-                      background: "green",
-                      width: "10px",
-                      borderRadius: "50px",
-                      height: "10px",
-                    }}
-                  ></div>
-                )}
+               
               </NoteCommentCard>
               {noteComment.comment === null ? (
                 <p></p>
@@ -119,25 +101,6 @@ export function Note() {
                 >
                   <p>{noteComment.comment}</p>
                   <p>{patient?.psychologist.psychologist.user.name}</p>
-                  {!userId ? (
-                    <div
-                      style={{
-                        background: "red",
-                        width: "10px",
-                        borderRadius: "50px",
-                        height: "10px",
-                      }}
-                    ></div>
-                  ) : (
-                    <div
-                      style={{
-                        background: "green",
-                        width: "10px",
-                        borderRadius: "50px",
-                        height: "10px",
-                      }}
-                    ></div>
-                  )}
                 </NoteCommentCard>
               )}
             </>
