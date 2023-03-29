@@ -14,7 +14,6 @@ export const PatientNoteContainer = styled.div`
   border-radius: 10px;
 
   @media (max-width: 600px) {
-    /* max-width: 240px; */
     height: auto;
   }
 `;
@@ -28,7 +27,6 @@ export const PatientComment = styled.div`
   width: 100%;
   height: 100vh;
   padding: 10px;
-  /* padding: 0 10px 0 10px; */
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
 `;
@@ -36,8 +34,6 @@ export const PatientComment = styled.div`
 export const NoteCommentCard = styled.div`
   display: flex;
   width: 100%;
-  /* height: auto; */
-  /* margin-top: 10px; */
   flex-direction: row;
   justify-content: space-between;
   margin: 5px;
@@ -69,7 +65,7 @@ export const NoteInput = styled.textarea`
   outline: none;
   resize: none;
   font-size: 14px;
-  color: rgb(115, 115, 115);
+  color: rgb(15, 15, 15);
 
   &:focus ~ span,
   &:valid ~ span {

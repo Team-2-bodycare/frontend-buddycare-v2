@@ -28,7 +28,7 @@ export const UserUpdateInput = styled.input`
   border: 1px solid rgba(0, 0, 0, 0.5);
   outline: none;
   font-size: 14px;
-  color: rgb(115, 115, 115);
+  color: rgb(15, 15, 15);
 
   &:focus ~ span,
   &:valid ~ span {
