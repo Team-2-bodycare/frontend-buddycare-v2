@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const GridModal = styled.div`
   display: flex;
-  justify-content: space-between;
-  position: fixed;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
   z-index: 1;
   left: 0;
   top: 0;
@@ -13,9 +14,18 @@ export const GridModal = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
 `;
 
+export const ModalContainer = styled.div`
+  position: relative;
+`;
+
+export const ModalTitle = styled.h2`
+  font-size: 24px;
+  margin-bottom: 20px;
+`;
+
 export const ModalContent = styled.div`
   background-color: #fefefe;
-  margin: 15% auto;
+  margin: 0 auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
@@ -29,33 +39,28 @@ export const ModalContent = styled.div`
   box-shadow: 2px 2px 5px black;
 `;
 
-
-export const ModalTitle = styled.h2`
-  font-size: 24px;
+export const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 20px;
 `;
 
-export const StyleInput = styled.input`
-background-color: rgba(240, 240, 240, 0.8);
-width: 240px;
-padding: 10px;
-margin-top: 20px;
-border-radius: 5px;
-border: 1px solid rgba(0, 0, 0, 0.5);
-outline: none;
-font-size: 14px;
-color: rgb(115, 115, 115);
-
-&:focus ~ span,
-&:valid ~ span {
-  transform: translateY(-20px);
-  padding: 1px 5px 1px 5px;
-  background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 3px;
+export const StyleLabel = styled.label`
   font-size: 14px;
-  opacity: 1;
-  color: white;
-}
+  margin-bottom: 5px;
+  text-align: center;
+`;
+
+export const StyleInput = styled.input`
+  background-color: rgba(240, 240, 240, 0.8);
+  width: 240px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  outline: none;
+  font-size: 14px;
+  color: rgb(115, 115, 115);
 `;
 
 export const StyleButton = styled.button`
@@ -69,9 +74,10 @@ export const StyleButton = styled.button`
   color: rgb(200, 200, 200);
   font-size: 16px;
   font-weight: bold;
-  transition: all 0.8s ease-out;
+  transition: all 0.1s ease-out;
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.6);
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.7);
   }
 `;

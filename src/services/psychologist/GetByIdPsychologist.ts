@@ -17,7 +17,7 @@ export const postPsychologist = async (data: PsychologistFormData) => {
   return response;
 };;
 
-export const updatePsychologist = async (id: string, data: Partial<IPsychologistsProfile>) => {
+export const updatePsychologist = async (id: string, data: PsychologistFormData) => {
   const psychologist = await getByIdPsychologist(id);
   const updatedPsychologist = { ...psychologist.data, ...data };
   const response = await Api.patch(`/psychologist/${id}`, updatedPsychologist);
