@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { SignIn } from "./pages/SignIn/SignIn";
+import { SignIn } from "../src/pages/signIn/SignIn";
 import { SignUp } from "./components/signUp/SignUp";
 import Home from "./pages/home/Home";
 import { PsychologistProfile } from "./pages/PsychologistProfile/PsychologistProfile";
