@@ -1,4 +1,10 @@
 import {
+  MenuButton,
+  MenuContainer,
+  MenuDropDownContent,
+  MenuDropDownLi,
+  MenuSubA,
+  NoteContainer,
   PatientContainer,
   PatientNotePsychologistContainer,
   PatientOptions,
@@ -7,6 +13,8 @@ import {
   PPName,
   PPPhoto,
   PPPsychologistContainer,
+  UserName,
+  UserPhoto,
 } from "./stylePatientProfile";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -17,6 +25,7 @@ import { getByIdPatient } from "../../services/patient/ByIdPatient";
 import { removePatientPsychologist } from "../../services/patientPsychologist/RemovePatientPsychologist";
 import { Note } from "../../components/note/Note";
 import { MenuUser } from "../../components/menuUser/MenuUser";
+import { UserUpdate } from "../../components/userUpdate/UserUpdate";
 
 export function PatientProfile() {
   const navigate = useNavigate();
@@ -39,9 +48,38 @@ export function PatientProfile() {
     }, 3000);
   }
 
+  const logout = () => {
+    localStorage.removeItem("jwt");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("type");
+    navigate("/");
+  };
+
+  let [show, setShow] = useState(0);
+  let [showNote, setShowNote] = useState(0);
+
   return (
     <PatientContainer>
-      <MenuUser />
+      <MenuContainer>
+        <MenuDropDownLi>
+          <UserPhoto src={patient?.photo} />
+          <MenuDropDownContent>
+            <MenuSubA onClick={() => setShow((show = 1))}>
+              Editar Perfil
+            </MenuSubA>
+            <MenuSubA onClick={() => logout()}>Sair</MenuSubA>
+            <MenuSubA onClick={() => deletePatientPsychologist()}>
+              Encerrar contrato
+            </MenuSubA>
+          </MenuDropDownContent>
+        </MenuDropDownLi>
+        {patient?.isPsychologist === false ? (
+          <UserName>Olá, {patient?.name}</UserName>
+        ) : (
+          <p></p>
+          // <UserName>Olá, {psychologist?.name}</UserName>
+        )}
+      </MenuContainer>
       {patient?.psychologist === null ? (
         <ListPsychologist />
       ) : (
@@ -50,26 +88,62 @@ export function PatientProfile() {
             <PPPsychologistContainer>
               <PPPhoto src={patient?.psychologist.psychologist.user.photo} />
               <PPName>{patient?.psychologist.psychologist.user.name}</PPName>
-              <PPButton onClick={() => deletePatientPsychologist()}>
-                Cancelar Contrato
-              </PPButton>
+              {showNote === 0 ? (
+                <PPButton onClick={() => setShowNote((showNote = 1))}>
+                  Enviar nota
+                </PPButton>
+              ) : (
+                <PPButton onClick={() => setShowNote((showNote = 0))}>
+                  Fechar notas
+                </PPButton>
+              )}
             </PPPsychologistContainer>
             <PatientOptions>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets
-                containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of
-                Lorem Ipsum.
-              </p>
+              {show === 1 ? (
+                <>
+                  <UserUpdate />
+                  <MenuButton onClick={() => setShow((show = 0))}>
+                    Cancelar
+                  </MenuButton>
+                </>
+              ) : (
+                <>
+                  <img
+                    onClick={() => {}}
+                    style={{
+                      width: "100%",
+                      borderRadius: "10px",
+                      marginBottom: "10px",
+                    }}
+                    src="https://palestraparaprofessores.com.br/wp-content/webp-express/webp-images/uploads/2022/07/frases-motivacionais-depressao-winderson-nunes.jpg.webp"
+                  />
+                  <img
+                    style={{
+                      width: "100%",
+                      borderRadius: "10px",
+                      marginBottom: "10px",
+                    }}
+                    src="https://palestraparaprofessores.com.br/wp-content/webp-express/webp-images/uploads/2022/07/Tenha-um-bom-dia-com-flores-story-do-instagram-Post-para-Facebook-compressed.jpg.webp"
+                  />
+                  <img
+                    style={{ width: "100%", borderRadius: "10px" }}
+                    src="https://palestraparaprofessores.com.br/wp-content/webp-express/webp-images/uploads/2022/07/mais-esperanca-nos-meus-passos-do-que-tristeza-nos-meus-ombros.jpg.webp"
+                  />
+                </>
+              )}
             </PatientOptions>
           </PatientNotePsychologistContainer>
-          <Note />
+          {showNote === 1 ? (
+            <Note />
+          ) : (
+            <NoteContainer>
+              <img
+                style={{ width: "100%", borderRadius: "10px" }}
+                src="https://palestraparaprofessores.com.br/wp-content/webp-express/webp-images/uploads/2022/07/frases-motivacionais-depressao-jim-carrey.jpg.webp"
+              />
+            </NoteContainer>
+          )}
+
           {/* <Payment /> */}
         </PPContainer>
       )}
