@@ -25,7 +25,7 @@ export const ModalTitle = styled.h2`
 
 export const ModalContent = styled.div`
   background-color: #fefefe;
-  margin: 0 auto;
+  margin: 50px auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
@@ -37,6 +37,27 @@ export const ModalContent = styled.div`
   flex-direction: column;
   align-items: center;
   box-shadow: 2px 2px 5px black;
+  position: relative;
+`;
+
+
+export const CloseButton = styled.button`
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 5px; // ajuste esse valor para garantir que o botão fique no canto
+  margin-right: 10px; // ajuste esse valor para garantir que o botão fique no canto
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #888;
+  transition: all 0.1s ease-out;
+
+  &:hover{
+    font-size: 30px;
+    color: #000000;
+  }
 `;
 
 export const InputWrapper = styled.div`
@@ -61,6 +82,7 @@ export const StyleInput = styled.input`
   outline: none;
   font-size: 14px;
   color: rgb(115, 115, 115);
+ 
 `;
 
 export const StyleButton = styled.button`

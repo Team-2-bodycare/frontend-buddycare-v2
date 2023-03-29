@@ -2,7 +2,7 @@ import { useState } from "react";
 import Modal from "react-modal";
 import { IPsychologistsProfile } from "../../interfaces/IPsychologistsProfile";
 import { updatePsychologist } from "../../services/psychologist/GetByIdPsychologist";
-import { GridModal, InputWrapper, ModalContent, ModalTitle, StyleButton, StyleInput, StyleLabel } from "./style/StyleModalPsychologist";
+import { CloseButton, GridModal, InputWrapper, ModalContent, ModalTitle, StyleButton, StyleInput, StyleLabel } from "./style/StyleModalPsychologist";
 
 interface PsychologistProfileModalProps {
   isOpen: boolean;
@@ -46,9 +46,11 @@ export function PsychologistProfileModal({ isOpen, closeModal, onSubmit }: Psych
   Modal.setAppElement("#root");
 
   return (
-    <Modal isOpen={isOpen} onRequestClose={closeModal} overlayClassName="react-modal-overlay" className="react-modal-content">
+    <Modal isOpen={isOpen} overlayClassName="react-modal-overlay" className="react-modal-content">
       <GridModal>
+      
         <ModalContent>
+        <CloseButton onClick={closeModal}>X</CloseButton>
           <ModalTitle>Atualize seus dados</ModalTitle>
           <form onSubmit={handleSubmit}>
             <InputWrapper>
@@ -63,7 +65,7 @@ export function PsychologistProfileModal({ isOpen, closeModal, onSubmit }: Psych
 
             <InputWrapper>
               <StyleLabel htmlFor="summary">Resumo</StyleLabel>
-              <textarea style={ {width: '250px', height: '100px', fontSize: '1rem', padding: '10px'}} id="summary" name="summary" value={psychologistData.summary} onChange={handleInputChange} />
+              <textarea style={{ width: '250px', height: '100px', fontSize: '1rem', padding: '10px' }} id="summary" name="summary" value={psychologistData.summary} onChange={handleInputChange} />
             </InputWrapper>
 
             <StyleButton type="submit">Salvar</StyleButton>
