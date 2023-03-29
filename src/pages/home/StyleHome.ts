@@ -28,7 +28,7 @@ export const Header = styled.header`
   }
 
   & > h1 {
-    font-size: 30px;
+    font-size: 35px;
     font-weight: bold;
     text-align: center;
     padding: 10px;
@@ -95,9 +95,9 @@ export const Card = styled.div`
 
 export const TitleCard = styled.h3`
   color: #ffffff;
-  font-size: 20px;
+  font-size: 25px;
   margin-bottom: 0 auto;
-  line-height: 1.2;
+  line-height: 1;
   word-wrap: break-word;
 
   @media screen and (max-height: 610px) {
