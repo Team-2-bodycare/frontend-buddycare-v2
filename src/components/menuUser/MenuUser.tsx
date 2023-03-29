@@ -56,9 +56,7 @@ export function MenuUser() {
       <MenuDropDownLi>
         <UserPhoto src={patient?.photo} />
         <MenuDropDownContent>
-          <MenuSubA onClick={() => navigate("/signin")}>Editar Perfil</MenuSubA>
-          <MenuSubA onClick={() => navigate("/signin")}>Meu psicólogo</MenuSubA>
-          <MenuSubA onClick={() => navigate("/signin")}>Chat</MenuSubA>
+          <MenuSubA onClick={() => {}}>Editar Perfil</MenuSubA>
           <MenuSubA onClick={() => logout()}>Sair</MenuSubA>
         </MenuDropDownContent>
       </MenuDropDownLi>
