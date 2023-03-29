@@ -10,7 +10,7 @@ import {
   SignInSpanEmail,
   SignInSpanPassword,
   SignInTitle,
-} from "./styleSignIn";
+} from "../signIn/styleSignIn";
 import swal from "sweetalert";
 import home from "../../assets/img/home.png";
 import signin from "../../assets/img/signin.png";
@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { ISignIn } from "../../interfaces/ISignIn";
 import { signInService } from "../../services/authentication/SignInAuth";
+import { Loading } from "../../components/loading/Loading";
 
 export function SignIn() {
   const navigate = useNavigate();
@@ -72,12 +73,30 @@ export function SignIn() {
     }
   };
 
+  let [loadind, setLoading] = useState(0);
+
+  const loadingShow = () => {
+    setLoading(1);
+    setTimeout(() => {
+      navigate("/");
+    }, 3000);
+  };
+
+  console.log(loadind);
   return (
     <SignInContainer>
+      {
+        loadind === 1 ? (
+          <Loading />
+        ) : (
+          <></>
+        )
+      }
+      
       <SignInImgHome
         title="Voltar ao início"
         src={home}
-        onClick={() => navigate("/")}
+        onClick={loadingShow}
       />
       <SignInForm onSubmit={handleSignin}>
         <SignInLogo src={signin} />
