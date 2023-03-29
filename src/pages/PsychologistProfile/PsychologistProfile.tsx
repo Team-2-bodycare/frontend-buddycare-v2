@@ -12,7 +12,7 @@ export function PsychologistProfile() {
   const { id } = useParams<{ id?: string }>();
   const parsedId = id ?? ""; // define um valor padrão de string vazia caso id seja undefined
 
-  const [psychologist, setPsychologist] = useState<IPsychologistsProfile>();
+  // const [psychologist, setPsychologist] = useState<IPsychologistsProfile>();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [userData, setUserData] = useState<IUser>();
@@ -39,7 +39,7 @@ export function PsychologistProfile() {
       const response = await updatePsychologist(parsedId, data);
       const updatedPsychologist = response.data;
       setIsModalOpen(false);
-      setPsychologist(updatedPsychologist);
+      // setPsychologist(updatedPsychologist);
     } catch (error) {
       console.log(error);
     }

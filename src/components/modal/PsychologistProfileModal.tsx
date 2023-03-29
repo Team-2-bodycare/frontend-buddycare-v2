@@ -2,6 +2,7 @@ import { useState } from "react";
 import Modal from "react-modal";
 import { IPsychologistsProfile } from "../../interfaces/IPsychologistsProfile";
 import { postPsychologist } from "../../services/psychologist/GetByIdPsychologist";
+import { GridModal, ModalContent, ModalTitle, StyleButton, StyleInput } from "./style/StyleModalPsychologist";
 
 interface PsychologistProfileModalProps {
   isOpen: boolean;
@@ -36,7 +37,7 @@ export function PsychologistProfileModal({ isOpen, closeModal, onSubmit }: Psych
       await postPsychologist(psychologistData); // Alterado para chamar a função postPsychologist
       await onSubmit(psychologistData);
       closeModal();
-      window.location.reload();
+      window.location.reload()
     } catch (error) {
       console.log(error);
     }
@@ -45,27 +46,32 @@ export function PsychologistProfileModal({ isOpen, closeModal, onSubmit }: Psych
   Modal.setAppElement("#root");
 
   return (
+
     <Modal isOpen={isOpen} onRequestClose={closeModal} overlayClassName="react-modal-overlay" className="react-modal-content">
-      <h2>Atualize seus dados</h2>
+      <GridModal>
+        <ModalContent>
+          <ModalTitle>Atualize seus dados</ModalTitle>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label>CRP</label>
+              <StyleInput type="text" name="crp" value={psychologistData.crp} onChange={handleInputChange} />
+            </div>
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>CRP</label>
-          <input type="text" name="crp" value={psychologistData.crp} onChange={handleInputChange} />
-        </div>
+            <div>
+              <label>Especialização</label>
+              <StyleInput type="text" name="specialization" value={psychologistData.specialization} onChange={handleInputChange} />
+            </div>
 
-        <div>
-          <label>Especialização</label>
-          <input type="text" name="specialization" value={psychologistData.specialization} onChange={handleInputChange} />
-        </div>
+            <div>
+              <label>Resumo</label>
+              <textarea name="summary" value={psychologistData.summary} onChange={handleInputChange} />
+            </div>
 
-        <div>
-          <label>Resumo</label>
-          <textarea name="summary" value={psychologistData.summary} onChange={handleInputChange} />
-        </div>
+            <StyleButton type="submit">Salvar</StyleButton>
+          </form>
+        </ModalContent>
+      </GridModal>
+    </Modal >
 
-        <button type="submit">Salvar</button>
-      </form>
-    </Modal>
   );
 }

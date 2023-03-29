@@ -70,7 +70,7 @@ const Home: React.FC = () => {
           }}
         >
           <img src={`${Logo}`} alt="Logo" />
-          <h1>Buddy Care - Cuidado emocional online ao seu alcance</h1>
+          <h1 >Buddy Care - Cuidado emocional online ao seu alcance</h1>
         </Header>
 
         <CardGrid>
@@ -105,7 +105,7 @@ const Home: React.FC = () => {
           ></Modal>
         )}
         <StyleButtton>
-        <ButtonWhatsap />
+          <ButtonWhatsap />
         </StyleButtton>
 
         <ContactForm />
