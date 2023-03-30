@@ -11,9 +11,9 @@ interface PsychologistProfileModalProps {
 }
 
 interface PsychologistFormData extends Partial<IPsychologistsProfile> {
-  crp: string;
-  specialization: string;
-  summary: string;
+  crp?: string;
+  specialization?: string;
+  summary?: string;
   userId: string;
 }
 

@@ -45,8 +45,8 @@ export const CloseButton = styled.button`
   position: absolute;
   top: 0;
   right: 0;
-  margin-top: 5px; // ajuste esse valor para garantir que o botão fique no canto
-  margin-right: 10px; // ajuste esse valor para garantir que o botão fique no canto
+  margin-top: 5px; 
+  margin-right: 10px;
   background-color: transparent;
   border: none;
   cursor: pointer;
