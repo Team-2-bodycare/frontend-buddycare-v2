@@ -33,7 +33,8 @@ export const NoteCommentCard = styled.div`
   display: flex;
   width: 100%;
   flex-direction: row;
-  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
   margin: 5px;
   padding: 10px;
   border-radius: 5px;
@@ -100,6 +101,14 @@ export const NoteButton = styled.button`
   }
 `;
 
+export const ShowPhoto = styled.img`
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+`;
+
 export const ShowNote = styled.p``;
 
-export const ShowNoteName = styled.p``;
+export const ShowNoteName = styled.p`
+  font-size: 12px;
+`;

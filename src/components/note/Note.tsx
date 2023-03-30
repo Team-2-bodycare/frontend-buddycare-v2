@@ -7,6 +7,7 @@ import {
   PatientNoteContainer,
   ShowNote,
   ShowNoteName,
+  ShowPhoto,
 } from "./styleNote";
 import { useEffect, useState } from "react";
 import { INote } from "../../interfaces/INote";
@@ -14,6 +15,8 @@ import { NoteService } from "../../services/patient/CreateNote";
 import swal from "sweetalert";
 import { IPatient } from "../../interfaces/IPatient";
 import { getByIdPatient } from "../../services/patient/ByIdPatient";
+import { ShowNameCommentDiv } from "../comment/styleComment";
+import { borderRadius } from "@mui/system";
 
 export function Note() {
   const userId = localStorage.getItem("userId");
@@ -75,8 +78,8 @@ export function Note() {
                   color: "rgb(240, 240, 240)",
                 }}
               >
+                <ShowPhoto src={patient.photo} />
                 <ShowNote>{noteComment.note}</ShowNote>
-                <ShowNoteName>{patient?.name}</ShowNoteName>
               </NoteCommentCard>
               {noteComment.comment === null ? (
                 <></>
@@ -87,10 +90,10 @@ export function Note() {
                     color: "rgb(240, 240, 240)",
                   }}
                 >
+                  <ShowPhoto
+                    src={patient?.psychologist.psychologist.user.photo}
+                  />
                   <ShowNote>{noteComment.comment}</ShowNote>
-                  <ShowNoteName>
-                    {patient?.psychologist.psychologist.user.name}
-                  </ShowNoteName>
                 </NoteCommentCard>
               )}
             </>
