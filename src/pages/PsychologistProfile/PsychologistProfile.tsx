@@ -9,6 +9,7 @@ import { PsychologistProfileModal } from "../../components/modal/PsychologistPro
 
 import { BsPersonFillGear, BsSearch } from "react-icons/bs";
 import { StyleInput } from "../../components/modal/style/StyleModalPsychologist";
+import PatientModal  from "../../components/modal/PatientModal";
 
 export interface IPatient {
   id: string;
@@ -96,9 +97,9 @@ export function PsychologistProfile() {
     (showButton && !showFullSummary ? "..." : "");
 
   const [showModal, setShowModal] = useState(false);
-  const [selectedPatient, setSelectedPatient] = useState<IPatient | null>(null);
+  const [selectedPatient, setSelectedPatient] = useState<IUser | null>(null);
 
-  function handleOpenModal(patient: IPatient) {
+  function handleOpenModal(patient: IUser) {
     setSelectedPatient(patient);
     setShowModal(true);
   }
@@ -109,7 +110,7 @@ export function PsychologistProfile() {
     setSearchTerm(event.target.value);
   };
 
-  const filteredPatients = userData?.worker.patient.filter((patient) => {
+  const filteredPatients = userData?.worker?.patient.filter((patient) => {
     return patient.user.name.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
@@ -145,12 +146,12 @@ export function PsychologistProfile() {
           <ListPacient>
             <h2 style={{ marginTop: '10px' }}>Lista de Pacientes</h2>
             <div>
-            <BsSearch style={{ fontSize: '25px', marginRight: '10px' }} /><StyleInput type="text" placeholder="Pesquisar por nome" value={searchTerm} onChange={handleSearchInputChange}/> 
+              <BsSearch style={{ fontSize: '25px', marginRight: '10px' }} /><StyleInput type="text" placeholder="Pesquisar por nome" value={searchTerm} onChange={handleSearchInputChange} />
             </div>
             <DivCard>
               <div>
                 {filteredPatients?.map((patient) => (
-                  <StyleLi key={patient.user.id} onClick={() => handleOpenModal(patient)}>
+                 <StyleLi key={patient.user.id} onClick={() => handleOpenModal(patient.user)}>
                     <img style={{ width: '80px', borderRadius: '49%' }} src={patient.user.photo} alt="Avatar" />
                     <h3>{patient.user.name}</h3>
                     <p>
@@ -162,9 +163,9 @@ export function PsychologistProfile() {
                   </StyleLi>
                 ))}
               </div>
-              {/* {showModal && (
-        <ModalPatient patient={selectedPatient} onClose={() => setShowModal(false)} />
-      )} */}
+              {showModal && (
+                <PatientModal patient={selectedPatient} onClose={() => setShowModal(false)} />
+              )}
             </DivCard>
           </ListPacient>
         </Div1>
@@ -205,14 +206,14 @@ export function PsychologistProfile() {
           )}
 
           <SubDiv2>
-
+            <h2>Notificações</h2>
           </SubDiv2>
 
         </Div2>
 
         <Div3>
           <div>
-            <h1>div3</h1>
+            <h1>Calendário e Notas</h1>
           </div>
         </Div3>
       </Body>

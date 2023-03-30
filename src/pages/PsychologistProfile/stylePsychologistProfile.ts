@@ -76,7 +76,7 @@ export const StyleLi = styled.li`
   border-radius: 20px;
   border: 1px solid #fff;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-  background-color: rgb(230, 230, 230);
+  background-color: #d9d9d9;
   padding: 10px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -141,7 +141,7 @@ export const SubDiv2 = styled.div`
   padding: 0.5rem 2rem;
   background-color: #3399ff;
   margin-top: 1rem;
-  width: 90%;
+  width: 100%;
   max-width: 600px;
   height: 150px;
   white-space: nowrap;

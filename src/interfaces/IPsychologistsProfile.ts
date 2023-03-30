@@ -16,7 +16,7 @@ export interface IUser {
   phone: string;
   password?: string;
   photo: string;
-  worker: {
+  worker?: {
     crp: string;
     specialization: string;
     summary: string;
