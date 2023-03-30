@@ -16,6 +16,7 @@ import {
   DetailsButton,
   DetailsDiv1,
   DetailsDiv2,
+  DetailsDivButton,
 } from "./styleDetails";
 
 export function Detalhe() {
@@ -58,9 +59,6 @@ export function Detalhe() {
         <DetailsContainer key={psychologist?.id}>
           <DetailsDiv1>
             <DetailsPhoto src={psychologist?.photo} />
-            <DetailsButton onClick={() => postPatientPsychologist()}>
-              Contratar
-            </DetailsButton>
           </DetailsDiv1>
           <DetailsDiv2>
             <DetailsName>{psychologist?.name}</DetailsName>
@@ -69,6 +67,12 @@ export function Detalhe() {
               Especialização: {psychologist?.worker.specialization}
             </DetailsSpecialization>
             <DetailsSummary>{psychologist?.worker.summary}</DetailsSummary>
+            <DetailsDivButton style={{display: "flex", gap: "10px"}}>
+            <DetailsButton onClick={() => postPatientPsychologist()}>
+              Contratar
+            </DetailsButton>
+            <DetailsButton onClick={() => navigate(-1)}>Voltar</DetailsButton>
+            </DetailsDivButton>
           </DetailsDiv2>
         </DetailsContainer>
       </DetailsMain>

@@ -5,23 +5,27 @@ import {
   NoteInput,
   PatientComment,
   PatientNoteContainer,
+  ShowComment,
+  ShowCommentName,
 } from "./styleComment";
-import { useEffect, useState } from "react";
-import { INote } from "../../interfaces/INote";
-import { NoteService } from "../../services/patient/CreateNote";
-import { getAllNotesComments } from "../../services/patient/GetAllNoteComment";
+import { useEffect, useRef, useState } from "react";
 import swal from "sweetalert";
-import { IPatient } from "../../interfaces/IPatient";
 import { getByIdPsychologist } from "../../services/psychologist/ByIdPsychologist";
 import { IComment } from "../../interfaces/IComment";
-import { IPsychologists } from "../../interfaces/IPsychologists";
+import { notesService } from "../../services/notes/NotesService";
+import { IComments } from "../../interfaces/IComments";
 
 export function CommentNote() {
   const userId = localStorage.getItem("userId");
-  const [psychologist, setPsychologist] = useState<IPsychologists>();
+
+  const [psychologist, setPsychologist] = useState<IComments>();
 
   useEffect(() => {
     psychologistById();
+
+    setInterval(() => {
+      psychologistById();
+    }, 5000);
   }, []);
 
   async function psychologistById() {
@@ -43,7 +47,14 @@ export function CommentNote() {
   const handleNote = async (e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    const response: any = await NoteService.Create(values);
+    const idNote = psychologist?.worker.patient.map((noteComment) =>
+      noteComment.user.note.map((id) => id.id).at(-1)
+    );
+
+    const response: any = await notesService.Create(
+      `${idNote?.at(-1)}`,
+      values
+    );
 
     if (!response) {
       swal({
@@ -59,92 +70,48 @@ export function CommentNote() {
     }
   };
 
-  const [notesComments, setNotesComments] = useState<IComment[]>([]);
-
-  useEffect(() => {
-    loadNotesComments();
-
-    setInterval(() => {
-      loadNotesComments();
-    }, 10000);
-  }, []);
-
-  async function loadNotesComments() {
-    const response = await getAllNotesComments();
-
-    setNotesComments(response.data);
-  }
-
   return (
     <PatientNoteContainer>
       <PatientComment>
-        {notesComments.map((noteComment) => {
-          return (
-            <>
-              <NoteCommentCard
-                key={noteComment.id}
-                style={{
-                  background: "rgba(0, 0, 0, 0.5)",
-                  color: "rgb(240, 240, 240)",
-                }}
-              >
-                <p>{noteComment.note}</p>
-                {/* <p>{psychologist?.worker.patient.user.name}</p> */}
-                {!userId ? (
-                  <div
-                    style={{
-                      background: "red",
-                      width: "10px",
-                      borderRadius: "50px",
-                      height: "10px",
-                    }}
-                  ></div>
-                ) : (
-                  <div
-                    style={{
-                      background: "green",
-                      width: "10px",
-                      borderRadius: "50px",
-                      height: "10px",
-                    }}
-                  ></div>
-                )}
-              </NoteCommentCard>
-              {noteComment.comment === null ? (
-                <p></p>
-              ) : (
+        {psychologist?.worker.patient.map((notes) =>
+          notes.user.note.map((noteComment) => {
+            return (
+              <>
                 <NoteCommentCard
+                  key={noteComment.id}
                   style={{
-                    background: "rgba(0, 0, 0, 0.6)",
+                    background: "rgba(0, 0, 0, 0.5)",
                     color: "rgb(240, 240, 240)",
                   }}
                 >
-                  <p>{noteComment.comment}</p>
-                  <p>{psychologist?.name}</p>
-                  {!userId ? (
-                    <div
-                      style={{
-                        background: "red",
-                        width: "10px",
-                        borderRadius: "50px",
-                        height: "10px",
-                      }}
-                    ></div>
-                  ) : (
-                    <div
-                      style={{
-                        background: "green",
-                        width: "10px",
-                        borderRadius: "50px",
-                        height: "10px",
-                      }}
-                    ></div>
-                  )}
+                  <div>
+                    <ShowCommentName>
+                      {psychologist.worker.patient.map(
+                        (patient) => patient.user.name
+                      )}
+                    </ShowCommentName>
+                    <ShowComment>{noteComment.note}</ShowComment>
+                  </div>
                 </NoteCommentCard>
-              )}
-            </>
-          );
-        })}
+                {noteComment.comment === null ? (
+                  <></>
+                ) : (
+                  <NoteCommentCard
+                    style={{
+                      background: "rgba(0, 0, 0, 0.6)",
+                      color: "rgb(240, 240, 240)",
+                    }}
+                  >
+                    <div>
+                      <ShowCommentName>{psychologist?.name}</ShowCommentName>
+                      <ShowComment>{noteComment.comment}</ShowComment>
+                    </div>
+                  </NoteCommentCard>
+                )}
+              </>
+            );
+          })
+        )}
       </PatientComment>
       <NoteForm onSubmit={handleNote}>
         <NoteInput

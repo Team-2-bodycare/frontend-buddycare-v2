@@ -24,8 +24,8 @@ import { IPatient } from "../../interfaces/IPatient";
 import { getByIdPatient } from "../../services/patient/ByIdPatient";
 import { removePatientPsychologist } from "../../services/patientPsychologist/RemovePatientPsychologist";
 import { Note } from "../../components/note/Note";
-import { MenuUser } from "../../components/menuUser/MenuUser";
 import { UserUpdate } from "../../components/userUpdate/UserUpdate";
+import { Loading } from "../../components/loading/Loading";
 
 export function PatientProfile() {
   const navigate = useNavigate();
@@ -43,6 +43,9 @@ export function PatientProfile() {
 
   async function deletePatientPsychologist() {
     await removePatientPsychologist(`${userId}`);
+
+    setLoading(1);
+
     setTimeout(() => {
       window.location.reload();
     }, 3000);
@@ -55,24 +58,39 @@ export function PatientProfile() {
     navigate("/");
   };
 
-  let [show, setShow] = useState(0);
+  let [showUpdate, setShowUpdate] = useState(0);
+
   let [showNote, setShowNote] = useState(0);
+
+  let [showPayment, setShowPayment] = useState(0);
+
+  let [loadind, setLoading] = useState(0);
+
+  const loadingShow = () => {
+    setLoading(1);
+    setTimeout(() => {
+      logout();
+    }, 3000);
+  };
 
   return (
     <PatientContainer>
+      {loadind === 1 ? <Loading /> : <></>}
       <MenuContainer>
         <MenuDropDownLi>
           <UserPhoto src={patient?.photo} />
           <MenuDropDownContent>
-            <MenuSubA onClick={() => setShow((show = 1))}>
+            <MenuSubA onClick={() => setShowUpdate((showUpdate = 1))}>
               Editar Perfil
             </MenuSubA>
-            <MenuSubA onClick={() => logout()}>Sair</MenuSubA>
+            <MenuSubA onClick={() => setShowPayment(1)}>Pagar sessão</MenuSubA>
             <MenuSubA onClick={() => deletePatientPsychologist()}>
               Encerrar contrato
             </MenuSubA>
+            <MenuSubA onClick={loadingShow}>Sair</MenuSubA>
           </MenuDropDownContent>
         </MenuDropDownLi>
+
         {patient?.isPsychologist === false ? (
           <UserName>Olá, {patient?.name}</UserName>
         ) : (
@@ -86,23 +104,33 @@ export function PatientProfile() {
         <PPContainer>
           <PatientNotePsychologistContainer>
             <PPPsychologistContainer>
-              <PPPhoto src={patient?.psychologist.psychologist.user.photo} />
-              <PPName>{patient?.psychologist.psychologist.user.name}</PPName>
-              {showNote === 0 ? (
-                <PPButton onClick={() => setShowNote((showNote = 1))}>
-                  Enviar nota
-                </PPButton>
+              {showPayment === 1 ? (
+                <Payment />
               ) : (
-                <PPButton onClick={() => setShowNote((showNote = 0))}>
-                  Fechar notas
-                </PPButton>
+                <>
+                  <PPPhoto
+                    src={patient?.psychologist.psychologist.user.photo}
+                  />
+                  <PPName>
+                    {patient?.psychologist.psychologist.user.name}
+                  </PPName>
+                  {showNote === 0 ? (
+                    <PPButton onClick={() => setShowNote((showNote = 1))}>
+                      Enviar nota
+                    </PPButton>
+                  ) : (
+                    <PPButton onClick={() => setShowNote((showNote = 0))}>
+                      Fechar notas
+                    </PPButton>
+                  )}
+                </>
               )}
             </PPPsychologistContainer>
             <PatientOptions>
-              {show === 1 ? (
+              {showUpdate === 1 ? (
                 <>
                   <UserUpdate />
-                  <MenuButton onClick={() => setShow((show = 0))}>
+                  <MenuButton onClick={() => setShowUpdate((showUpdate = 0))}>
                     Cancelar
                   </MenuButton>
                 </>
@@ -143,8 +171,6 @@ export function PatientProfile() {
               />
             </NoteContainer>
           )}
-
-          {/* <Payment /> */}
         </PPContainer>
       )}
     </PatientContainer>

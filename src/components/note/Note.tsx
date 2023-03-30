@@ -5,14 +5,18 @@ import {
   NoteInput,
   PatientComment,
   PatientNoteContainer,
+  ShowNote,
+  ShowNoteName,
+  ShowPhoto,
 } from "./styleNote";
 import { useEffect, useState } from "react";
 import { INote } from "../../interfaces/INote";
 import { NoteService } from "../../services/patient/CreateNote";
-import { getAllNotesComments } from "../../services/patient/GetAllNoteComment";
 import swal from "sweetalert";
 import { IPatient } from "../../interfaces/IPatient";
 import { getByIdPatient } from "../../services/patient/ByIdPatient";
+import { ShowNameCommentDiv } from "../comment/styleComment";
+import { borderRadius } from "@mui/system";
 
 export function Note() {
   const userId = localStorage.getItem("userId");
@@ -20,6 +24,10 @@ export function Note() {
 
   useEffect(() => {
     patientById();
+
+    setInterval(() => {
+      patientById();
+    }, 5000);
   }, []);
 
   async function patientById() {
@@ -57,26 +65,10 @@ export function Note() {
     }
   };
 
-  const [notesComments, setNotesComments] = useState<INote[]>([]);
-
-  useEffect(() => {
-    loadNotesComments();
-
-    setInterval(() => {
-      loadNotesComments();
-    }, 10000);
-  }, []);
-
-  async function loadNotesComments() {
-    const response = await getAllNotesComments();
-
-    setNotesComments(response.data);
-  }
-
   return (
     <PatientNoteContainer>
       <PatientComment>
-        {notesComments.map((noteComment) => {
+        {patient?.note.map((noteComment) => {
           return (
             <>
               <NoteCommentCard
@@ -86,12 +78,11 @@ export function Note() {
                   color: "rgb(240, 240, 240)",
                 }}
               >
-                <p>{noteComment.note}</p>
-                <p>{patient?.name}</p>
-               
+                <ShowPhoto src={patient.photo} />
+                <ShowNote>{noteComment.note}</ShowNote>
               </NoteCommentCard>
               {noteComment.comment === null ? (
-                <p></p>
+                <></>
               ) : (
                 <NoteCommentCard
                   style={{
@@ -99,8 +90,10 @@ export function Note() {
                     color: "rgb(240, 240, 240)",
                   }}
                 >
-                  <p>{noteComment.comment}</p>
-                  <p>{patient?.psychologist.psychologist.user.name}</p>
+                  <ShowPhoto
+                    src={patient?.psychologist.psychologist.user.photo}
+                  />
+                  <ShowNote>{noteComment.comment}</ShowNote>
                 </NoteCommentCard>
               )}
             </>

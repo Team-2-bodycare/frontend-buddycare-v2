@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const ListContainer = styled.div`
   display: flex;
   width: 100%;
+  min-height: 100vh;
   padding-top: 70px;
 `;
 
@@ -51,12 +52,13 @@ export const ListName = styled.p`
   font-size: 20px;
   font-weight: bold;
   text-align: center;
-  color: rgb(115, 115, 115);
+  color: rgb(15, 15, 15);
   padding: 10px;
 `;
 
 export const ListSpecialization = styled.p`
   text-align: center;
+  font-size: 18px;
   font-weight: bold;
-  color: rgb(115, 115, 115);
+  color: rgb(15, 15, 15);
 `;

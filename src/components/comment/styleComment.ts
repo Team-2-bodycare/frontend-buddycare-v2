@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-// Estilização das notas do paciente
-
 export const PatientNoteContainer = styled.div`
   width: 100%;
   display: flex;
@@ -14,12 +12,9 @@ export const PatientNoteContainer = styled.div`
   border-radius: 10px;
 
   @media (max-width: 600px) {
-    /* max-width: 240px; */
     height: auto;
   }
 `;
-
-// Get da nota e do comentário
 
 export const PatientComment = styled.div`
   display: flex;
@@ -28,26 +23,22 @@ export const PatientComment = styled.div`
   width: 100%;
   height: 100vh;
   padding: 10px;
-  /* padding: 0 10px 0 10px; */
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 `;
 
 export const NoteCommentCard = styled.div`
   background: rgba(210, 210, 210, 0.3);
   display: flex;
   width: 100%;
-  /* height: auto; */
-  /* margin-top: 10px; */
   flex-direction: row;
-  justify-content: space-between;
   margin: 5px;
-  padding: 10px;
+  padding: 2px 10px;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.3);
 `;
-
-// Fim do Get
 
 export const NoteForm = styled.form`
   display: flex;
@@ -107,4 +98,12 @@ export const NoteButton = styled.button`
   &:hover {
     background-color: rgba(0, 0, 0, 0.6);
   }
+`;
+
+export const ShowNameCommentDiv = styled.div``;
+
+export const ShowComment = styled.p``;
+
+export const ShowCommentName = styled.p`
+  font-size: 12px;
 `;

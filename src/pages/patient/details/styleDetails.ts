@@ -1,10 +1,15 @@
 import styled from "styled-components";
+import background from "../../../assets/img/background.jpg";
 
 export const DetailsMain = styled.div`
-  background: rgb(200, 200, 200);
+  background-image: url(${background});
+  background-size: cover;
+  background-position: center;
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
+  min-height: 100vh;
 `;
 
 export const DetailsContainer = styled.div`
@@ -40,6 +45,7 @@ export const DetailsDiv2 = styled.div`
   flex-direction: column;
   justify-content: left;
   align-items: left;
+  padding: 0 20px 0 0;
 
   @media (max-width: 600px) {
     padding: 5px 20px 20px 20px;
@@ -56,25 +62,30 @@ export const DetailsName = styled.p`
   margin-bottom: 20px;
   font-size: 20px;
   font-weight: bold;
-  color: rgb(115, 115, 115);
+  color: rgb(240, 240, 240);
 `;
 
 export const DetailsSpecialization = styled.p`
   margin-bottom: 10px;
   font-weight: bold;
-  color: rgb(115, 115, 115);
+  color: rgb(240, 240, 240);
 `;
 
 export const DetailsSummary = styled.p`
   margin-bottom: 10px;
   font-weight: bold;
-  color: rgb(115, 115, 115);
+  color: rgb(240, 240, 240);
 `;
 
 export const DetailsCrp = styled.p`
   margin-bottom: 10px;
   font-weight: bold;
-  color: rgb(115, 115, 115);
+  color: rgb(240, 240, 240);
+`;
+
+export const DetailsDivButton = styled.div`
+  display: flex;
+  gap: 10px;
 `;
 
 export const DetailsButton = styled.button`
@@ -85,7 +96,7 @@ export const DetailsButton = styled.button`
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  color: white;
+  color: rgb(240, 240, 240);
   font-size: 16px;
   font-weight: bold;
   transition: all 0.8s ease-out;
