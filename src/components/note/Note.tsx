@@ -5,11 +5,12 @@ import {
   NoteInput,
   PatientComment,
   PatientNoteContainer,
+  ShowNote,
+  ShowNoteName,
 } from "./styleNote";
 import { useEffect, useState } from "react";
 import { INote } from "../../interfaces/INote";
 import { NoteService } from "../../services/patient/CreateNote";
-import { getAllNotesComments } from "../../services/patient/GetAllNoteComment";
 import swal from "sweetalert";
 import { IPatient } from "../../interfaces/IPatient";
 import { getByIdPatient } from "../../services/patient/ByIdPatient";
@@ -20,6 +21,10 @@ export function Note() {
 
   useEffect(() => {
     patientById();
+
+    setInterval(() => {
+      patientById();
+    }, 5000);
   }, []);
 
   async function patientById() {
@@ -57,26 +62,10 @@ export function Note() {
     }
   };
 
-  const [notesComments, setNotesComments] = useState<INote[]>([]);
-
-  useEffect(() => {
-    loadNotesComments();
-
-    setInterval(() => {
-      loadNotesComments();
-    }, 10000);
-  }, []);
-
-  async function loadNotesComments() {
-    const response = await getAllNotesComments();
-
-    setNotesComments(response.data);
-  }
-
   return (
     <PatientNoteContainer>
       <PatientComment>
-        {notesComments.map((noteComment) => {
+        {patient?.note.map((noteComment) => {
           return (
             <>
               <NoteCommentCard
@@ -86,12 +75,11 @@ export function Note() {
                   color: "rgb(240, 240, 240)",
                 }}
               >
-                <p>{noteComment.note}</p>
-                <p>{patient?.name}</p>
-               
+                <ShowNote>{noteComment.note}</ShowNote>
+                <ShowNoteName>{patient?.name}</ShowNoteName>
               </NoteCommentCard>
               {noteComment.comment === null ? (
-                <p></p>
+                <></>
               ) : (
                 <NoteCommentCard
                   style={{
@@ -99,8 +87,10 @@ export function Note() {
                     color: "rgb(240, 240, 240)",
                   }}
                 >
-                  <p>{noteComment.comment}</p>
-                  <p>{patient?.psychologist.psychologist.user.name}</p>
+                  <ShowNote>{noteComment.comment}</ShowNote>
+                  <ShowNoteName>
+                    {patient?.psychologist.psychologist.user.name}
+                  </ShowNoteName>
                 </NoteCommentCard>
               )}
             </>

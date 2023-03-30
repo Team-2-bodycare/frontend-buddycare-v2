@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-// Estilização das notas do paciente
-
 export const PatientNoteContainer = styled.div`
   width: 100%;
   display: flex;
@@ -18,17 +16,17 @@ export const PatientNoteContainer = styled.div`
   }
 `;
 
-// Get da nota e do comentário
-
 export const PatientComment = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 `;
 
 export const NoteCommentCard = styled.div`
@@ -41,8 +39,6 @@ export const NoteCommentCard = styled.div`
   border-radius: 5px;
   border: none;
 `;
-
-// Fim do Get
 
 export const NoteForm = styled.form`
   display: flex;
@@ -103,3 +99,7 @@ export const NoteButton = styled.button`
     background-color: rgba(0, 0, 0, 0.6);
   }
 `;
+
+export const ShowNote = styled.p``;
+
+export const ShowNoteName = styled.p``;
