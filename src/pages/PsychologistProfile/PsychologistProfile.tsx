@@ -6,14 +6,11 @@ import { getByIdUser } from "../../services/users/GetByIdUser";
 import { updatePsychologist } from "../../services/psychologist/GetByIdPsychologist";
 import { IPsychologistsProfile } from "../../interfaces/IPsychologistsProfile";
 import { PsychologistProfileModal } from "../../components/modal/PsychologistProfileModal";
-<<<<<<< HEAD
-import { MenuUser } from "../../components/menuUser/MenuUser";
 import { CommentNote } from "../../components/comment/CommentNote";
-=======
-
+import PatientModal from "../../components/modal/PatientModal";
 import { BsPersonFillGear, BsSearch } from "react-icons/bs";
 import { StyleInput } from "../../components/modal/style/StyleModalPsychologist";
-import PatientModal  from "../../components/modal/PatientModal";
+
 
 export interface IPatient {
   id: string;
@@ -24,7 +21,6 @@ export interface IPatient {
   progress: [];
   note: [];
 }
->>>>>>> e7f90fde77fc8d338d7b4a046dda9a9083164097
 
 export function PsychologistProfile() {
   const { id } = useParams<{ id?: string }>();
@@ -123,10 +119,8 @@ export function PsychologistProfile() {
     <>
       <Body>
         <Div1>
-<<<<<<< HEAD
           <CommentNote />
           <h1>div 1</h1>
-=======
 
           <StyleMenu>
             {userData ? (
@@ -177,7 +171,6 @@ export function PsychologistProfile() {
               )}
             </DivCard>
           </ListPacient>
->>>>>>> e7f90fde77fc8d338d7b4a046dda9a9083164097
         </Div1>
 
         <Div2>
