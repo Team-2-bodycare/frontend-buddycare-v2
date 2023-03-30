@@ -151,7 +151,7 @@ export function PsychologistProfile() {
               <div>
                 {filteredPatients?.map((patient) => (
                   <StyleLi key={patient.user.id} onClick={() => handleOpenModal(patient)}>
-                    <img style={{ width: '80px' }} src={patient.user.photo} alt="Avatar" />
+                    <img style={{ width: '80px', borderRadius: '49%' }} src={patient.user.photo} alt="Avatar" />
                     <h3>{patient.user.name}</h3>
                     <p>
                       <b>Email:</b> {patient.user.email}

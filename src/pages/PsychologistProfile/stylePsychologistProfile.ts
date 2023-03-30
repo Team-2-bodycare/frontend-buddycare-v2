@@ -19,9 +19,12 @@ export const Div1 = styled.div`
   border-radius: 1rem;
   margin: 0rem 1rem 0rem 5rem;
 
+  @media (max-width: 992px) {
+    margin: 2rem 0.5rem;
+  }
 
   @media (max-width: 768px) {
-    margin: 2rem 0.5rem;
+    margin: 1rem 0.5rem;
   }
 
   @media (max-width: 576px) {
@@ -53,38 +56,36 @@ export const ListPacient = styled.div`
   overflow: auto;
 `;
 
-
-  export const DivCard = styled.div`
+export const DivCard = styled.div`
   display: flex;
   width: 100%;
   height: 200px;
   flex-direction: column;
   padding: 1rem;
   text-align: center;
-  `;
+`;
 
-  export const StyleLi = styled.li`
-    display: flex;
-    width: 90%;
-    height: 165px;
-    flex-direction: column;
-    text-align: center;
-    margin-top: .8rem;
-  
-    border-radius: 20px;
-    border: 1px solid #fff;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-    background-color: rgb(230, 230, 230);
-    padding: 10px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-  
-    &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
-    }
+export const StyleLi = styled.li`
+  display: flex;
+  width: 90%;
+  height: 165px;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 0.8rem;
 
-  `;
+  border-radius: 20px;
+  border: 1px solid #fff;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  background-color: rgb(230, 230, 230);
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  }
+`;
 
 export const Div2 = styled.div`
   flex: 1;
@@ -94,8 +95,13 @@ export const Div2 = styled.div`
   flex-wrap: wrap;
   margin: 0rem 1rem 0rem 1rem;
 
-  @media (max-width: 768px) {
+
+  @media (max-width: 992px) {
     margin: 2rem 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    margin: 1rem 0.5rem;
   }
 
   @media (max-width: 576px) {
@@ -103,7 +109,6 @@ export const Div2 = styled.div`
     flex-basis: 100%;
   }
 `;
-
 export const SubDiv1 = styled.div`
   display: flex;
   flex-direction: column;
@@ -114,24 +119,39 @@ export const SubDiv1 = styled.div`
   background-color: rgba(255, 255, 255);
   width: 100%;
   height: 400px;
+  overflow: auto;
 
   p {
     color: #333333;
   }
+
+  @media (max-width: 576px) {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
 `;
 
+
 export const SubDiv2 = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-text-align: center;
-border-radius: 20px;
-padding: 0.5rem 2rem;
-background-color: #3399ff;
-margin-top: 1rem;
-width: 100%;
-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: 20px;
+  padding: 0.5rem 2rem;
+  background-color: #3399ff;
+  margin-top: 1rem;
+  width: 90%;
+  max-width: 600px;
+  height: 150px;
+  white-space: nowrap;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0.5rem;
+  }
 `;
+
 
 export const StyleButton = styled.button`
   border-radius: 3rem;
@@ -140,7 +160,7 @@ export const StyleButton = styled.button`
   border: none;
   width: 7rem;
   height: 1.9rem;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   transition: all 0.1s ease-out;
   cursor: pointer;
 
@@ -148,6 +168,10 @@ export const StyleButton = styled.button`
     color: #ffffff;
     transform: scale(1.1);
     background-color: #007acc;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
   }
 `;
 
@@ -163,6 +187,10 @@ export const Div3 = styled.div`
   margin: 0rem 5rem 0rem 1rem;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 5.9);
 
+  @media (max-width: 1200px) {
+    margin: 2rem;
+  }
+
   @media (max-width: 768px) {
     margin: 2rem 0.5rem;
   }
@@ -174,22 +202,23 @@ export const Div3 = styled.div`
 `;
 
 export const MenuSubA = styled.a`
-width: auto;
-color: #595959;
-padding: 10px 15px;
-text-decoration: none;
-display: block;
-text-align: left;
-border-radius: 10px;
-background-color: #e6e6e6;
+  width: auto;
+  color: #595959;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  border-radius: 10px;
+  background-color: #e6e6e6;
 
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 
-&:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 370px) {
-  font-size: 15px;
-}
+  @media (max-width: 576px) {
+    font-size: 15px;
+    padding: 8px 12px;
+  }
 `;
+
 
