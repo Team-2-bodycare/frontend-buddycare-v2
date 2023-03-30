@@ -1,5 +1,18 @@
 import { useState, useRef, useEffect, SetStateAction } from "react";
-import { Body, Div1, Div2, Div3, StyleButton, SubDiv1, SubDiv2, StyleMenu, ListPacient, MenuSubA, StyleLi, DivCard } from "./stylePsychologistProfile";
+import {
+  Body,
+  Div1,
+  Div2,
+  Div3,
+  StyleButton,
+  SubDiv1,
+  SubDiv2,
+  StyleMenu,
+  ListPacient,
+  MenuSubA,
+  StyleLi,
+  DivCard,
+} from "./stylePsychologistProfile";
 import { useNavigate, useParams } from "react-router-dom";
 import { IUser } from "../../interfaces/IPsychologistsProfile";
 import { getByIdUser } from "../../services/users/GetByIdUser";
@@ -10,7 +23,6 @@ import { CommentNote } from "../../components/comment/CommentNote";
 import PatientModal from "../../components/modal/PatientModal";
 import { BsPersonFillGear, BsSearch } from "react-icons/bs";
 import { StyleInput } from "../../components/modal/style/StyleModalPsychologist";
-
 
 export interface IPatient {
   id: string;
@@ -52,7 +64,9 @@ export function PsychologistProfile() {
     }
   }, []);
 
-  const handleUpdatePsychologist = async (data: Partial<IPsychologistsProfile>) => {
+  const handleUpdatePsychologist = async (
+    data: Partial<IPsychologistsProfile>
+  ) => {
     try {
       const response = await updatePsychologist(parsedId, data);
       const updatedPsychologist = response.data;
@@ -105,9 +119,11 @@ export function PsychologistProfile() {
     setShowModal(true);
   }
 
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const handleSearchInputChange = (event: { target: { value: SetStateAction<string>; }; }) => {
+  const handleSearchInputChange = (event: {
+    target: { value: SetStateAction<string> };
+  }) => {
     setSearchTerm(event.target.value);
   };
 
@@ -119,17 +135,30 @@ export function PsychologistProfile() {
     <>
       <Body>
         <Div1>
-          <CommentNote />
-          <h1>div 1</h1>
-
           <StyleMenu>
             {userData ? (
               <>
-                <img src={userData.photo} style={{ width: "55px" }} alt="avatar" />
-                <p style={{ fontSize: '1rem', color: '#000000' }}><b>Olá, Dr.{userData.name}</b><br></br>Psicólogo(MenuSubA)</p>
+                <img
+                  src={userData.photo}
+                  style={{ width: "55px" }}
+                  alt="avatar"
+                />
+                <p style={{ fontSize: "1rem", color: "#000000" }}>
+                  <b>Olá, Dr.{userData.name}</b>
+                  <br></br>Psicólogo(MenuSubA)
+                </p>
 
                 <div>
-                  <BsPersonFillGear style={{ color: '#0077b3', width: '250px', cursor: 'pointer', position: 'absolute', fontSize: '30px' }} onClick={() => setMenuOpen(!menuOpen)} />
+                  <BsPersonFillGear
+                    style={{
+                      color: "#0077b3",
+                      width: "250px",
+                      cursor: "pointer",
+                      position: "absolute",
+                      fontSize: "30px",
+                    }}
+                    onClick={() => setMenuOpen(!menuOpen)}
+                  />
                   {menuOpen && (
                     <span>
                       <MenuSubA href="#">Setings</MenuSubA>
@@ -143,19 +172,31 @@ export function PsychologistProfile() {
             ) : (
               <p>Carregando dados do psicólogo...</p>
             )}
-
           </StyleMenu>
 
           <ListPacient>
-            <h2 style={{ marginTop: '10px' }}>Lista de Pacientes</h2>
+            <h2 style={{ marginTop: "10px" }}>Lista de Pacientes</h2>
             <div>
-              <BsSearch style={{ fontSize: '25px', marginRight: '10px' }} /><StyleInput type="text" placeholder="Pesquisar por nome" value={searchTerm} onChange={handleSearchInputChange} />
+              <BsSearch style={{ fontSize: "25px", marginRight: "10px" }} />
+              <StyleInput
+                type="text"
+                placeholder="Pesquisar por nome"
+                value={searchTerm}
+                onChange={handleSearchInputChange}
+              />
             </div>
             <DivCard>
               <div>
                 {filteredPatients?.map((patient) => (
-                 <StyleLi key={patient.user.id} onClick={() => handleOpenModal(patient.user)}>
-                    <img style={{ width: '80px', borderRadius: '49%' }} src={patient.user.photo} alt="Avatar" />
+                  <StyleLi
+                    key={patient.user.id}
+                    onClick={() => handleOpenModal(patient.user)}
+                  >
+                    <img
+                      style={{ width: "80px", borderRadius: "49%" }}
+                      src={patient.user.photo}
+                      alt="Avatar"
+                    />
                     <h3>{patient.user.name}</h3>
                     <p>
                       <b>Email:</b> {patient.user.email}
@@ -167,7 +208,10 @@ export function PsychologistProfile() {
                 ))}
               </div>
               {showModal && (
-                <PatientModal patient={selectedPatient} onClose={() => setShowModal(false)} />
+                <PatientModal
+                  patient={selectedPatient}
+                  onClose={() => setShowModal(false)}
+                />
               )}
             </DivCard>
           </ListPacient>
@@ -176,32 +220,75 @@ export function PsychologistProfile() {
         <Div2>
           {userData ? (
             <SubDiv1>
-              <img src={userData.photo} style={{ width: "120px" }} alt="avatar" />
-              <p style={{ fontSize: '1.5rem', color: '#000000' }}><b>Olá, Dr.{userData.name}</b></p>
-              <p style={{ marginTop: '10px' }} ><b>{userData.worker?.specialization || 'Não informado'}</b></p>
-              <p><b>CRP:</b> {userData.worker?.crp}</p>
-              <p style={{ marginTop: '10px' }} ><b>Contato:</b> {userData.phone}</p>
+              <img
+                src={userData.photo}
+                style={{ width: "120px" }}
+                alt="avatar"
+              />
+              <p style={{ fontSize: "1.5rem", color: "#000000" }}>
+                <b>Olá, Dr.{userData.name}</b>
+              </p>
+              <p style={{ marginTop: "10px" }}>
+                <b>{userData.worker?.specialization || "Não informado"}</b>
+              </p>
+              <p>
+                <b>CRP:</b> {userData.worker?.crp}
+              </p>
+              <p style={{ marginTop: "10px" }}>
+                <b>Contato:</b> {userData.phone}
+              </p>
               {userData.worker?.summary && (
                 <>
-                  <p style={{ marginTop: '10px' }} ><b>Resumo:</b></p>
+                  <p style={{ marginTop: "10px" }}>
+                    <b>Resumo:</b>
+                  </p>
                   {showFullSummary ? (
                     <>
-                      <p style={{ overflow: 'auto' }}>{userData.worker?.summary}</p>
-                      <button style={{ border: 'none', backgroundColor: 'rgba(0, 0, 0, 0.0', color: 'red', cursor: 'pointer' }} onClick={() => setShowFullSummary(false)}>Fechar</button>
+                      <p style={{ overflow: "auto" }}>
+                        {userData.worker?.summary}
+                      </p>
+                      <button
+                        style={{
+                          border: "none",
+                          backgroundColor: "rgba(0, 0, 0, 0.0",
+                          color: "red",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => setShowFullSummary(false)}
+                      >
+                        Fechar
+                      </button>
                     </>
                   ) : (
                     <>
                       <p>{summaryPreview}</p>
-                      {showButton && <button style={{ border: 'none', backgroundColor: 'rgba(0, 0, 0, 0.0', color: 'blue', cursor: 'pointer' }} onClick={() => setShowFullSummary(true)}>Ver mais</button>}
+                      {showButton && (
+                        <button
+                          style={{
+                            border: "none",
+                            backgroundColor: "rgba(0, 0, 0, 0.0",
+                            color: "blue",
+                            cursor: "pointer",
+                          }}
+                          onClick={() => setShowFullSummary(true)}
+                        >
+                          Ver mais
+                        </button>
+                      )}
                     </>
                   )}
                 </>
               )}
-              <StyleButton onClick={() => setIsModalOpen(true)}>Editar</StyleButton>
+              <StyleButton onClick={() => setIsModalOpen(true)}>
+                Editar
+              </StyleButton>
 
-              <PsychologistProfileModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} onSubmit={handleUpdatePsychologist} />
+              <PsychologistProfileModal
+                isOpen={isModalOpen}
+                closeModal={() => setIsModalOpen(false)}
+                onSubmit={handleUpdatePsychologist}
+              />
             </SubDiv1>
-
           ) : error ? (
             <p>{error}</p>
           ) : (
@@ -211,7 +298,6 @@ export function PsychologistProfile() {
           <SubDiv2>
             <h2>Notificações</h2>
           </SubDiv2>
-
         </Div2>
 
         <Div3>
