@@ -6,29 +6,32 @@ export interface IPsychologistsProfile {
       specialization: string;
       summary: string;
     };
-    patient: {
-        id: string;
-        name: string;
-        email: string;
-        phone: string;
-        photo: string;
-      };
+} 
 
-    user: IUser;
-}
 
 export interface IUser {
-  id: string;
+  id?: string;
   name: string;
   email: string;
   phone: string;
+  password?: string;
   photo: string;
-  worker?: {
+  worker: {
     crp: string;
     specialization: string;
     summary: string;
-  };
+    patient: [ 
+      user: {
+       user: any;
+       id: string;
+       name: string;
+       email: string;
+       phone: string;
+       photo: string;
+       progress: [];
+       note:[]
+     }
+     ]
+  }
 }
 
-  
-  
