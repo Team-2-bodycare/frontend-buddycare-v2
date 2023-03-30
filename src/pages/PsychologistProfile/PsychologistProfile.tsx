@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Body, Div1, Div2, Div3, StyleButton, SubDiv1, SubDiv2, StyleMenu, ListPacient, MenuSubA } from "./stylePsychologistProfile";
+import { Body, Div1, Div2, Div3, StyleButton, SubDiv1, SubDiv2, StyleMenu, ListPacient, MenuSubA, StyleLi, DivCard } from "./stylePsychologistProfile";
 import { useNavigate, useParams } from "react-router-dom";
 import { IUser } from "../../interfaces/IPsychologistsProfile";
 import { getByIdUser } from "../../services/users/GetByIdUser";
@@ -8,6 +8,16 @@ import { IPsychologistsProfile } from "../../interfaces/IPsychologistsProfile";
 import { PsychologistProfileModal } from "../../components/modal/PsychologistProfileModal";
 
 import { BsPersonFillGear } from "react-icons/bs";
+
+export interface IPatient {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  photo: string;
+  progress: [];
+  note:[];
+}
 
 export function PsychologistProfile() {
   const { id } = useParams<{ id?: string }>();
@@ -84,6 +94,15 @@ export function PsychologistProfile() {
     userData?.worker?.summary?.slice(0, summaryPreviewMaxLength) +
     (showButton && !showFullSummary ? "..." : "");
 
+  const [showModal, setShowModal] = useState(false);
+  const [selectedPatient, setSelectedPatient] = useState<IPatient | null>(null);
+
+  function handleOpenModal(patient: IPatient) {
+    setSelectedPatient(patient);
+    setShowModal(true);
+  }
+  
+
   return (
     <>
       <Body>
@@ -96,7 +115,7 @@ export function PsychologistProfile() {
                 <p style={{ fontSize: '1rem', color: '#000000' }}><b>Olá, Dr.{userData.name}</b><br></br>Psicólogo(MenuSubA)</p>
 
                 <div>
-                  <BsPersonFillGear style={{color: '#0077b3', width: '250px', cursor: 'pointer', position: 'absolute', fontSize: '30px'}} onClick={() => setMenuOpen(!menuOpen)}/>
+                  <BsPersonFillGear style={{ color: '#0077b3', width: '250px', cursor: 'pointer', position: 'absolute', fontSize: '30px' }} onClick={() => setMenuOpen(!menuOpen)} />
                   {menuOpen && (
                     <span>
                       <MenuSubA href="#">Setings</MenuSubA>
@@ -114,17 +133,22 @@ export function PsychologistProfile() {
           </StyleMenu>
 
           <ListPacient>
-          <h2>Lista de Pacientes</h2>
-      <ul>
-        {userData?.worker.patient.map((patient) => (
-          <li key={patient.user.id}>
-            <img src={patient.user.photo} alt={patient.user.name} />
-            <h3>{patient.user.name}</h3>
-            <p>Email: {patient.user.email}</p>
-            <p>Telefone: {patient.user.phone}</p>
-          </li>
-        ))}
-      </ul>
+            <h2>Lista de Pacientes</h2>
+            <DivCard>
+              <ul style={{ listStyle: 'none' }}>
+                {userData?.worker.patient.map((patient) => (
+                  <StyleLi key={patient.user.id} onClick={() => handleOpenModal(patient)}>
+                    <img style={{ width: "90px" }} src={patient.user.photo} alt='Avatar' />
+                    <h3>{patient.user.name}</h3>
+                    <p><b>Email:</b> {patient.user.email}</p>
+                    <p><b>Telefone:</b> {patient.user.phone}</p>
+                  </StyleLi>
+                ))}
+              </ul>
+            {/* {showModal && (
+              <ModalPatient patient={selectedPatient} onClose={() => setShowModal(false)} />
+            )} */}
+            </DivCard>
           </ListPacient>
         </Div1>
 
@@ -141,7 +165,7 @@ export function PsychologistProfile() {
                   <p style={{ marginTop: '10px' }} ><b>Resumo:</b></p>
                   {showFullSummary ? (
                     <>
-                      <p>{userData.worker?.summary}</p>
+                      <p style={{}}>{userData.worker?.summary}</p>
                       <button style={{ border: 'none', backgroundColor: 'rgba(0, 0, 0, 0.0', color: 'red', cursor: 'pointer' }} onClick={() => setShowFullSummary(false)}>Fechar</button>
                     </>
                   ) : (

@@ -42,12 +42,49 @@ export const StyleMenu = styled.div`
 `;
 
 export const ListPacient = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   width: 100%;
   height: 29rem;
   margin-bottom: 1rem;
   border-radius: 20px;
   background-color: rgba(255, 255, 255);
+  overflow: auto;
 `;
+
+
+  export const DivCard = styled.div`
+  display: flex;
+  width: 100%;
+  height: 200px;
+  flex-direction: column;
+  padding: 1rem;
+  text-align: center;
+  `;
+
+  export const StyleLi = styled.li`
+    display: flex;
+    width: 90%;
+    height: 180px;
+    flex-direction: column;
+    text-align: center;
+    margin-top: .8rem;
+  
+    border-radius: 20px;
+    border: 1px solid #fff;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    background-color: rgb(230, 230, 230);
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    }
+
+  `;
 
 export const Div2 = styled.div`
   flex: 1;
@@ -155,3 +192,4 @@ background-color: #e6e6e6;
   font-size: 15px;
 }
 `;
+
