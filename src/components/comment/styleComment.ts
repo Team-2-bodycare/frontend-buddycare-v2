@@ -34,9 +34,8 @@ export const NoteCommentCard = styled.div`
   display: flex;
   width: 100%;
   flex-direction: row;
-  justify-content: space-between;
   margin: 5px;
-  padding: 10px;
+  padding: 2px 10px;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.3);
 `;
@@ -101,6 +100,10 @@ export const NoteButton = styled.button`
   }
 `;
 
+export const ShowNameCommentDiv = styled.div``;
+
 export const ShowComment = styled.p``;
 
-export const ShowCommentName = styled.p``;
+export const ShowCommentName = styled.p`
+  font-size: 12px;
+`;

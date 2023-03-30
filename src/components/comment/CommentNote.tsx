@@ -5,6 +5,8 @@ import {
   NoteInput,
   PatientComment,
   PatientNoteContainer,
+  ShowComment,
+  ShowCommentName,
 } from "./styleComment";
 import { useEffect, useRef, useState } from "react";
 import swal from "sweetalert";
@@ -70,47 +72,47 @@ export function CommentNote() {
 
   return (
     <PatientNoteContainer>
-        <PatientComment>
-          {psychologist?.worker.patient.map((notes) =>
-            notes.user.note.map((noteComment) => {
-              return (
-                <>
+      <PatientComment>
+        {psychologist?.worker.patient.map((notes) =>
+          notes.user.note.map((noteComment) => {
+            return (
+              <>
+                <NoteCommentCard
+                  key={noteComment.id}
+                  style={{
+                    background: "rgba(0, 0, 0, 0.5)",
+                    color: "rgb(240, 240, 240)",
+                  }}
+                >
+                  <div>
+                    <ShowCommentName>
+                      {psychologist.worker.patient.map(
+                        (patient) => patient.user.name
+                      )}
+                    </ShowCommentName>
+                    <ShowComment>{noteComment.note}</ShowComment>
+                  </div>
+                </NoteCommentCard>
+                {noteComment.comment === null ? (
+                  <></>
+                ) : (
                   <NoteCommentCard
-                    key={noteComment.id}
                     style={{
-                      background: "rgba(0, 0, 0, 0.5)",
+                      background: "rgba(0, 0, 0, 0.6)",
                       color: "rgb(240, 240, 240)",
                     }}
                   >
                     <div>
-                      <p>
-                        {psychologist.worker.patient.map(
-                          (patient) => patient.user.name
-                        )}
-                      </p>
-                      <p>{noteComment.note}</p>
+                      <ShowCommentName>{psychologist?.name}</ShowCommentName>
+                      <ShowComment>{noteComment.comment}</ShowComment>
                     </div>
                   </NoteCommentCard>
-                  {noteComment.comment === null ? (
-                    <p></p>
-                  ) : (
-                    <NoteCommentCard
-                      style={{
-                        background: "rgba(0, 0, 0, 0.6)",
-                        color: "rgb(240, 240, 240)",
-                      }}
-                    >
-                      <div>
-                        <p>{psychologist?.name}</p>
-                        <p>{noteComment.comment}</p>
-                      </div>
-                    </NoteCommentCard>
-                  )}
-                </>
-              );
-            })
-          )}
-        </PatientComment>
+                )}
+              </>
+            );
+          })
+        )}
+      </PatientComment>
       <NoteForm onSubmit={handleNote}>
         <NoteInput
           autoComplete="off"
