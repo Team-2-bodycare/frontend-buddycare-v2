@@ -42,6 +42,7 @@ export function Payment() {
   return (
     <PaymentContainer>
       <PaymentPriceSession>Valor por sessão: R${(values.priceSession).toFixed(2).toString().replace(".", ",")}</PaymentPriceSession>
+      <div style={{display: "flex", width: "100%"}}>
       <PaymentLabel>Total de sessões </PaymentLabel>
         <PaymentTotalSession name="totalSession"  onChange={handleChangesValues}>
           <PaymentTotalSessionOptions></PaymentTotalSessionOptions>
@@ -52,9 +53,9 @@ export function Payment() {
           <PaymentTotalSessionOptions value={9}>9</PaymentTotalSessionOptions>
           <PaymentTotalSessionOptions value={10}>10</PaymentTotalSessionOptions>
         </PaymentTotalSession>
-        
+        </div>
       <PaymentInstallmentsDiv>
-        <PaymentLabel>Parcelado em</PaymentLabel>
+        <PaymentLabel>Em</PaymentLabel>
         <PaymentInstallments name="installments" onChange={handleChangesValues}>
           <PaymentInstallmentsOptions></PaymentInstallmentsOptions>
           <PaymentInstallmentsOptions value={1}>1</PaymentInstallmentsOptions>

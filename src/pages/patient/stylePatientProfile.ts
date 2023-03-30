@@ -60,8 +60,8 @@ export const PatientOptions = styled.div`
 
 export const PPPsychologistContainer = styled.div`
   width: 100%;
-  max-width: 240px;
-  height: 200px;
+  max-width: 300px;
+  /* height: 200px; */
   display: flex;
   flex-direction: column;
   justify-content: center;

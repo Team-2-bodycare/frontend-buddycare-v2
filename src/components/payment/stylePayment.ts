@@ -3,10 +3,13 @@ import styled from "styled-components";
 export const PaymentContainer = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.3);
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
   border-radius: 10px;
   padding: 10px;
   font-weight: bold;
-  color: rgb(115, 115, 115);
+  color: rgb(240, 240, 240);
 `;
 
 export const PaymentSessionDiv = styled.div`
