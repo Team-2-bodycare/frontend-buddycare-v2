@@ -82,7 +82,6 @@ export const StyleInput = styled.input`
   outline: none;
   font-size: 14px;
   color: rgb(115, 115, 115);
- 
 `;
 
 export const StyleButton = styled.button`

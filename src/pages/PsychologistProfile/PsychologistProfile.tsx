@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, SetStateAction } from "react";
 import { Body, Div1, Div2, Div3, StyleButton, SubDiv1, SubDiv2, StyleMenu, ListPacient, MenuSubA, StyleLi, DivCard } from "./stylePsychologistProfile";
 import { useNavigate, useParams } from "react-router-dom";
 import { IUser } from "../../interfaces/IPsychologistsProfile";
@@ -7,7 +7,8 @@ import { updatePsychologist } from "../../services/psychologist/GetByIdPsycholog
 import { IPsychologistsProfile } from "../../interfaces/IPsychologistsProfile";
 import { PsychologistProfileModal } from "../../components/modal/PsychologistProfileModal";
 
-import { BsPersonFillGear } from "react-icons/bs";
+import { BsPersonFillGear, BsSearch } from "react-icons/bs";
+import { StyleInput } from "../../components/modal/style/StyleModalPsychologist";
 
 export interface IPatient {
   id: string;
@@ -16,7 +17,7 @@ export interface IPatient {
   phone: string;
   photo: string;
   progress: [];
-  note:[];
+  note: [];
 }
 
 export function PsychologistProfile() {
@@ -101,7 +102,16 @@ export function PsychologistProfile() {
     setSelectedPatient(patient);
     setShowModal(true);
   }
-  
+
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearchInputChange = (event: { target: { value: SetStateAction<string>; }; }) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredPatients = userData?.worker.patient.filter((patient) => {
+    return patient.user.name.toLowerCase().includes(searchTerm.toLowerCase());
+  });
 
   return (
     <>
@@ -133,21 +143,28 @@ export function PsychologistProfile() {
           </StyleMenu>
 
           <ListPacient>
-            <h2>Lista de Pacientes</h2>
+            <h2 style={{ marginTop: '10px' }}>Lista de Pacientes</h2>
+            <div>
+            <BsSearch style={{ fontSize: '25px', marginRight: '10px' }} /><StyleInput type="text" placeholder="Pesquisar por nome" value={searchTerm} onChange={handleSearchInputChange}/> 
+            </div>
             <DivCard>
-              <ul style={{ listStyle: 'none' }}>
-                {userData?.worker.patient.map((patient) => (
+              <div>
+                {filteredPatients?.map((patient) => (
                   <StyleLi key={patient.user.id} onClick={() => handleOpenModal(patient)}>
-                    <img style={{ width: "90px" }} src={patient.user.photo} alt='Avatar' />
+                    <img style={{ width: '80px' }} src={patient.user.photo} alt="Avatar" />
                     <h3>{patient.user.name}</h3>
-                    <p><b>Email:</b> {patient.user.email}</p>
-                    <p><b>Telefone:</b> {patient.user.phone}</p>
+                    <p>
+                      <b>Email:</b> {patient.user.email}
+                    </p>
+                    <p>
+                      <b>Telefone:</b> {patient.user.phone}
+                    </p>
                   </StyleLi>
                 ))}
-              </ul>
-            {/* {showModal && (
-              <ModalPatient patient={selectedPatient} onClose={() => setShowModal(false)} />
-            )} */}
+              </div>
+              {/* {showModal && (
+        <ModalPatient patient={selectedPatient} onClose={() => setShowModal(false)} />
+      )} */}
             </DivCard>
           </ListPacient>
         </Div1>
@@ -165,7 +182,7 @@ export function PsychologistProfile() {
                   <p style={{ marginTop: '10px' }} ><b>Resumo:</b></p>
                   {showFullSummary ? (
                     <>
-                      <p style={{}}>{userData.worker?.summary}</p>
+                      <p style={{ overflow: 'auto' }}>{userData.worker?.summary}</p>
                       <button style={{ border: 'none', backgroundColor: 'rgba(0, 0, 0, 0.0', color: 'red', cursor: 'pointer' }} onClick={() => setShowFullSummary(false)}>Fechar</button>
                     </>
                   ) : (

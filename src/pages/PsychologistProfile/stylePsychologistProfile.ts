@@ -66,7 +66,7 @@ export const ListPacient = styled.div`
   export const StyleLi = styled.li`
     display: flex;
     width: 90%;
-    height: 180px;
+    height: 165px;
     flex-direction: column;
     text-align: center;
     margin-top: .8rem;
