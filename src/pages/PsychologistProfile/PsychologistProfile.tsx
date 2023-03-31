@@ -29,6 +29,8 @@ import { StyleInput } from "../../components/modal/style/StyleModalPsychologist"
 import config from "../../assets/img/icon.png";
 import logo from "../../assets/img/logo.png";
 import { IComments } from "../../interfaces/IComments";
+import { ProgressGraphic } from "../../components/progress/ProgressGraphic";
+import { Calendar, CalendarProps } from "../../components/calendar/Calendar";
 
 export interface IPatient {
   id: string;
@@ -41,6 +43,24 @@ export interface IPatient {
 }
 
 export function PsychologistProfile() {
+
+  const currentDate = new Date();
+  const notes = new Map();
+  const handleDateSelect = (date: Date) => {
+    console.log('Selected date:', date);
+  };
+  const handleAddNote = (date: Date, note: string) => {
+    console.log('Adding note:', note, 'for date:', date);
+  };
+  
+  const calendarProps: CalendarProps = {
+    currentDate,
+    notes,
+    onDateSelect: handleDateSelect,
+    onAddNote: handleAddNote,
+    selectedDate: null,
+  };
+
   const { id } = useParams<{ id?: string }>();
   const parsedId = id ?? "";
 
@@ -66,11 +86,9 @@ export function PsychologistProfile() {
           setError("Erro ao buscar os dados do usuário.");
         }
       };
+      
       fetchData();
 
-      setInterval(() => {
-        fetchData();
-      }, 5000);
     }
   }, []);
 
@@ -380,8 +398,10 @@ export function PsychologistProfile() {
         </Div2>
 
         <Div3>
+
           <DivCalendar>
             <h1>Calendário</h1>
+            <Calendar {...calendarProps} />
           </DivCalendar>
 
           <DivNotas>
@@ -390,6 +410,10 @@ export function PsychologistProfile() {
             </h1>
           </DivNotas>
 
+          <div>
+            <h1>Calendário e Notas</h1>
+            <ProgressGraphic />
+          </div>
         </Div3>
       </Body>
     </>
