@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { CommentNote } from '../comment/CommentNote';
 import { ModalGrid, StyleChat, } from './style/StylePatientModal';
 import graphic from "../../assets/img/graphic.png";
+import { ButtonWhatsap } from '../buttonWhatsap/ButtonWhatsap';
 
 interface PatientModalProps {
   patient: IUser | null;
@@ -65,6 +66,7 @@ export default function PatientModal({ patient, onClose }: PatientModalProps) {
         <CommentNote />
       </StyleChat>
       </ModalGrid>
+      <ButtonWhatsap />
     </Modal>
   );
 }
