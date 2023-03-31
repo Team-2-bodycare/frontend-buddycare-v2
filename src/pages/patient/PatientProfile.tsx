@@ -70,7 +70,7 @@ export function PatientProfile() {
     setLoading(1);
     setTimeout(() => {
       logout();
-    }, 3000);
+    }, 1500);
   };
 
   return (
@@ -94,8 +94,7 @@ export function PatientProfile() {
         {patient?.isPsychologist === false ? (
           <UserName>Olá, {patient?.name}</UserName>
         ) : (
-          <p></p>
-          // <UserName>Olá, {psychologist?.name}</UserName>
+          <></>
         )}
       </MenuContainer>
       {patient?.psychologist === null ? (
@@ -105,7 +104,13 @@ export function PatientProfile() {
           <PatientNotePsychologistContainer>
             <PPPsychologistContainer>
               {showPayment === 1 ? (
-                <Payment />
+                <>
+                  <Payment />
+                  <MenuButton>Pagar</MenuButton>
+                  <MenuButton onClick={() => setShowPayment(0)}>
+                    Cancelar
+                  </MenuButton>
+                </>
               ) : (
                 <>
                   <PPPhoto
@@ -131,7 +136,7 @@ export function PatientProfile() {
                 <>
                   <UserUpdate />
                   <MenuButton onClick={() => setShowUpdate((showUpdate = 0))}>
-                    Cancelar
+                    Fechar
                   </MenuButton>
                 </>
               ) : (

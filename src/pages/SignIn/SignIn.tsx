@@ -59,16 +59,16 @@ export function SignIn() {
       localStorage.setItem("type", type);
       localStorage.setItem("userId", userId);
 
-      swal({
-        title: "Bem vindo ao Buddy Care",
-        icon: "success",
-        timer: 4000,
-      });
+      setLoading(1);
 
       if (type === true) {
-        navigate("/psychologist-profile");
+        setTimeout(() => {
+          navigate("/psychologist-profile");
+        }, 1500);
       } else {
-        navigate("/patient-Profile");
+        setTimeout(() => {
+          navigate("/patient-Profile");
+        }, 1500);
       }
     }
   };
@@ -79,20 +79,14 @@ export function SignIn() {
     setLoading(1);
     setTimeout(() => {
       navigate("/");
-    }, 3000);
+    }, 1500);
   };
 
   console.log(loadind);
   return (
     <SignInContainer>
-      {
-        loadind === 1 ? (
-          <Loading />
-        ) : (
-          <></>
-        )
-      }
-      
+      {loadind === 1 ? <Loading /> : <></>}
+
       <SignInImgHome
         title="Voltar ao início"
         src={home}

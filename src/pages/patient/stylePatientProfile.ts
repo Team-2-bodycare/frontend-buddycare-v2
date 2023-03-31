@@ -56,12 +56,9 @@ export const PatientOptions = styled.div`
   }
 `;
 
-// Estilização do perfil do Psicólogo
-
 export const PPPsychologistContainer = styled.div`
   width: 100%;
   max-width: 300px;
-  /* height: 200px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -105,8 +102,6 @@ export const PPButton = styled.button`
     background-color: rgba(0, 0, 0, 0.6);
   }
 `;
-
-// Menu usuário
 
 export const MenuContainer = styled.div`
   position: fixed;

@@ -19,7 +19,7 @@ export function Menu() {
     setLoading(1);
     setTimeout(() => {
       navigate(props);
-    }, 3000);
+    }, 1500);
   };
 
   return (
