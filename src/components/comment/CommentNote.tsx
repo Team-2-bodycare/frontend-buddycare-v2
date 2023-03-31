@@ -8,7 +8,7 @@ import {
   ShowComment,
   ShowCommentName,
 } from "./styleComment";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import swal from "sweetalert";
 import { getByIdPsychologist } from "../../services/psychologist/ByIdPsychologist";
 import { IComment } from "../../interfaces/IComment";
