@@ -13,6 +13,8 @@ import {
   StyleLi,
   DivCard,
   MenuButton,
+  DivCalendar,
+  DivNotas,
 } from "./stylePsychologistProfile";
 import { useNavigate, useParams } from "react-router-dom";
 import { IUser } from "../../interfaces/IPsychologistsProfile";
@@ -378,9 +380,16 @@ export function PsychologistProfile() {
         </Div2>
 
         <Div3>
-          <div>
-            <h1>Calendário e Notas</h1>
-          </div>
+          <DivCalendar>
+            <h1>Calendário</h1>
+          </DivCalendar>
+
+          <DivNotas>
+            <h1>
+              Anotações
+            </h1>
+          </DivNotas>
+
         </Div3>
       </Body>
     </>

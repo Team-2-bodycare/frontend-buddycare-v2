@@ -40,7 +40,7 @@ export const StyleMenu = styled.div`
   border-radius: 10px;
   padding: 0.5rem;
   width: 100%;
-  height: 120px;
+  height: 100px;
   gap: 5px;
   margin-bottom: 1rem;
 `;
@@ -179,15 +179,12 @@ export const StyleButton = styled.button`
 
 export const Div3 = styled.div`
   flex: 1;
-  background-color: rgba(255, 255, 255, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  border: 1px solid #ffffff;
-  border-radius: 1rem;
-  margin: 0rem 5rem 0rem 1rem;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 5.9);
+  margin: 0rem 5rem 1rem 1rem;
+
 
   @media (max-width: 1200px) {
     margin: 2rem;
@@ -238,3 +235,39 @@ export const MenuButton = styled.button`
     background-color: rgba(0, 0, 0, 0.6);
   }
 `;
+
+export const DivCalendar = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+border-radius: 20px;
+padding: 0.5rem 2rem;
+background-color: rgba(255, 255, 255);
+width: 100%;
+height: 350px;
+overflow: auto;
+
+@media (max-width: 576px) {
+  width: 100%;
+  margin: 0.5rem 0;
+}
+`;
+
+export const DivNotas = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+border-radius: 20px;
+padding: 0.5rem 2rem;
+background-color: rgba(255, 255, 255);
+width: 100%;
+height: 200px;
+overflow: auto;
+
+@media (max-width: 576px) {
+  width: 100%;
+  margin: 0.5rem 0;
+}
+`
