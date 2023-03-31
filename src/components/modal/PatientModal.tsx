@@ -1,6 +1,6 @@
 import { IUser } from '../../interfaces/IPsychologistsProfile';
 import Modal from 'react-modal';
-// import { Graphic } from '../graphic/Graphic';
+import { Graphic } from '../graphic/Graphic';
 import { useState } from 'react';
 import { CommentNote } from '../comment/CommentNote';
 import { ModalGrid, StyleChat, } from './style/StylePatientModal';
@@ -59,7 +59,10 @@ export default function PatientModal({ patient, onClose }: PatientModalProps) {
       </div>
       <button onClick={onClose}>Fechar</button>
 
-      {/* <Graphic data={data} options={Option} /> */}
+      {/* <div>
+      <Graphic data={progressData} />
+      </div> */}
+
       <StyleChat>
         <CommentNote />
       </StyleChat>

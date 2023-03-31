@@ -29,6 +29,19 @@ const data = {
   ],
 };
 
+interface GraphicProps {
+  data: {
+    labels: string[];
+    datasets: {
+      label: string;
+      data: number[];
+      fill: boolean;
+      borderColor: string;
+      tension: number;
+    }[];
+  };
+}
+
 const options = {
   scales: {
     y: {
@@ -40,10 +53,17 @@ const options = {
   }
 };
 
-export const Graphic = () => (
+export const Graphic = ({ data }: GraphicProps) => (
   <>
-    <h2>Vendas por mês</h2>
-    <Bar data={data} options={options} />
+    <div style={{           backgroundColor: 'white',
+          borderRadius: '10px',
+          padding: '20px',
+          maxWidth: '80%',
+          maxHeight: '80%',
+          overflowY: 'auto',}}>
+      <h2>Vendas por mês</h2>
+      <Bar data={data} options={options} />
+    </div>
   </>
 );
 
