@@ -114,14 +114,28 @@ export function CommentNote() {
         )}
       </PatientComment>
       <NoteForm onSubmit={handleNote}>
-        <NoteInput
-          autoComplete="off"
-          name="comment"
-          placeholder="mensagem"
-          required
-          value={values.comment}
-          onChange={handleChangesValues}
-        />
+        {psychologist?.worker.patient
+          .map((notes) => notes.user.note.map((comment) => comment.comment))[0]
+          .at(-1) === null ? (
+          <NoteInput
+            autoComplete="off"
+            name="comment"
+            placeholder="mensagem"
+            required
+            value={values.comment}
+            onChange={handleChangesValues}
+          />
+        ) : (
+          <NoteInput
+            disabled
+            autoComplete="off"
+            name="comment"
+            placeholder="mensagem"
+            required
+            value={values.comment}
+            onChange={handleChangesValues}
+          />
+        )}
         <NoteButton>Enviar</NoteButton>
       </NoteForm>
     </PatientNoteContainer>
