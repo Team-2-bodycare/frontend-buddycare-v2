@@ -29,7 +29,6 @@ import { StyleInput } from "../../components/modal/style/StyleModalPsychologist"
 import config from "../../assets/img/icon.png";
 import logo from "../../assets/img/logo.png";
 import { IComments } from "../../interfaces/IComments";
-import { ProgressGraphic } from "../../components/progress/ProgressGraphic";
 import { Calendar, CalendarProps } from "../../components/calendar/Calendar";
 
 export interface IPatient {
@@ -171,7 +170,7 @@ export function PsychologistProfile() {
                     width: "100%",
                     display: "flex",
                     flexDirection: "column",
-                    height: "100px",
+                    height: "90px",
                     alignItems: "center",
                     justifyContent: "center",
                     boxShadow: "1px 1px 3px black",
@@ -198,7 +197,7 @@ export function PsychologistProfile() {
                   style={{
                     width: "100%",
                     display: "flex",
-                    height: "100px",
+                    height: "90px",
                     flexDirection: "column",
                     justifyContent: "center",
                     alignItems: "center",
@@ -409,11 +408,6 @@ export function PsychologistProfile() {
               Anotações
             </h1>
           </DivNotas>
-
-          <div>
-            <h1>Calendário e Notas</h1>
-            <ProgressGraphic />
-          </div>
         </Div3>
       </Body>
     </>

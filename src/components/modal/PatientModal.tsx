@@ -1,9 +1,9 @@
 import { IUser } from '../../interfaces/IPsychologistsProfile';
 import Modal from 'react-modal';
-import { Graphic } from '../graphic/Graphic';
 import { useState } from 'react';
 import { CommentNote } from '../comment/CommentNote';
 import { ModalGrid, StyleChat, } from './style/StylePatientModal';
+import graphic from "../../assets/img/graphic.png";
 
 interface PatientModalProps {
   patient: IUser | null;
@@ -43,8 +43,9 @@ export default function PatientModal({ patient, onClose }: PatientModalProps) {
     
     <Modal isOpen={true}>
       <ModalGrid>
-      <h2>Detalhes do Paciente</h2>
+      <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
       <div>
+      <h2>Detalhes do Paciente</h2>
         <img style={{ width: '150px', borderRadius: '49%' }} src={patient?.photo} alt="Avatar" />
         <h3>{patient?.name}</h3>
         <p>
@@ -56,13 +57,10 @@ export default function PatientModal({ patient, onClose }: PatientModalProps) {
         <p>
           <b>Progresso:</b> {patient?.worker?.patient[0].user.progress.join(', ')}
         </p>
+        <button onClick={onClose}>Fechar</button>
       </div>
-      <button onClick={onClose}>Fechar</button>
-
-      {/* <div>
-      <Graphic data={progressData} />
-      </div> */}
-
+      <img src={graphic} alt="" style={{ width: "30%" }} />
+      </div>
       <StyleChat>
         <CommentNote />
       </StyleChat>
