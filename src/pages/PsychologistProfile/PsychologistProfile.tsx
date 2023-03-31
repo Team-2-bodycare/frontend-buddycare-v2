@@ -27,6 +27,7 @@ import { StyleInput } from "../../components/modal/style/StyleModalPsychologist"
 import config from "../../assets/img/icon.png";
 import logo from "../../assets/img/logo.png";
 import { IComments } from "../../interfaces/IComments";
+import { ProgressGraphic } from "../../components/progress/ProgressGraphic";
 
 export interface IPatient {
   id: string;
@@ -64,11 +65,9 @@ export function PsychologistProfile() {
           setError("Erro ao buscar os dados do usuário.");
         }
       };
+      
       fetchData();
 
-      setInterval(() => {
-        fetchData();
-      }, 5000);
     }
   }, []);
 
@@ -380,6 +379,7 @@ export function PsychologistProfile() {
         <Div3>
           <div>
             <h1>Calendário e Notas</h1>
+            <ProgressGraphic />
           </div>
         </Div3>
       </Body>
