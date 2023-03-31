@@ -1,8 +1,17 @@
 import { useState } from "react";
 import Modal from "react-modal";
 import { IPsychologistsProfile } from "../../interfaces/IPsychologistsProfile";
-import { updatePsychologist } from "../../services/psychologist/GetByIdPsychologist";
-import { CloseButton, GridModal, InputWrapper, ModalContent, ModalTitle, StyleButton, StyleInput, StyleLabel } from "./style/StyleModalPsychologist";
+import { postPsychologist } from "../../services/psychologist/GetByIdPsychologist";
+import {
+  CloseButton,
+  GridModal,
+  InputWrapper,
+  ModalContent,
+  ModalTitle,
+  StyleButton,
+  StyleInput,
+  StyleLabel,
+} from "./style/StyleModalPsychologist";
 
 interface PsychologistProfileModalProps {
   isOpen: boolean;
@@ -11,21 +20,28 @@ interface PsychologistProfileModalProps {
 }
 
 interface PsychologistFormData extends Partial<IPsychologistsProfile> {
-  crp?: string;
-  specialization?: string;
-  summary?: string;
+  crp: string;
+  specialization: string;
+  summary: string;
   userId: string;
 }
 
-export function PsychologistProfileModal({ isOpen, closeModal, onSubmit }: PsychologistProfileModalProps) {
-  const [psychologistData, setPsychologistData] = useState<PsychologistFormData>({
-    crp: "",
-    specialization: "",
-    summary: "",
-    userId: localStorage.getItem("userId") || "",
-  });
+export function PsychologistProfileModal({
+  isOpen,
+  closeModal,
+  onSubmit,
+}: PsychologistProfileModalProps) {
+  const [psychologistData, setPsychologistData] =
+    useState<PsychologistFormData>({
+      crp: "",
+      specialization: "",
+      summary: "",
+      userId: localStorage.getItem("userId") || "",
+    });
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = event.target;
     setPsychologistData({ ...psychologistData, [name]: value });
   };
@@ -34,10 +50,10 @@ export function PsychologistProfileModal({ isOpen, closeModal, onSubmit }: Psych
     event.preventDefault();
 
     try {
-      await updatePsychologist(psychologistData.userId, psychologistData);// Alterado para chamar a função postPsychologist
+      await postPsychologist(psychologistData);
       await onSubmit(psychologistData);
       closeModal();
-      window.location.reload()
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
@@ -46,26 +62,52 @@ export function PsychologistProfileModal({ isOpen, closeModal, onSubmit }: Psych
   Modal.setAppElement("#root");
 
   return (
-    <Modal isOpen={isOpen} overlayClassName="react-modal-overlay" className="react-modal-content">
+    <Modal
+      isOpen={isOpen}
+      overlayClassName="react-modal-overlay"
+      className="react-modal-content"
+    >
       <GridModal>
-      
         <ModalContent>
-        <CloseButton onClick={closeModal}>X</CloseButton>
+          <CloseButton onClick={closeModal}>X</CloseButton>
           <ModalTitle>Atualize seus dados</ModalTitle>
           <form onSubmit={handleSubmit}>
             <InputWrapper>
               <StyleLabel htmlFor="crp">CRP</StyleLabel>
-              <StyleInput type="text" id="crp" name="crp" value={psychologistData.crp} onChange={handleInputChange} />
+              <StyleInput
+                type="text"
+                id="crp"
+                name="crp"
+                value={psychologistData.crp}
+                onChange={handleInputChange}
+              />
             </InputWrapper>
 
             <InputWrapper>
               <StyleLabel htmlFor="specialization">Especialização</StyleLabel>
-              <StyleInput type="text" id="specialization" name="specialization" value={psychologistData.specialization} onChange={handleInputChange} />
+              <StyleInput
+                type="text"
+                id="specialization"
+                name="specialization"
+                value={psychologistData.specialization}
+                onChange={handleInputChange}
+              />
             </InputWrapper>
 
             <InputWrapper>
               <StyleLabel htmlFor="summary">Resumo</StyleLabel>
-              <textarea style={{ width: '250px', height: '100px', fontSize: '1rem', padding: '10px' }} id="summary" name="summary" value={psychologistData.summary} onChange={handleInputChange} />
+              <textarea
+                style={{
+                  width: "250px",
+                  height: "100px",
+                  fontSize: "1rem",
+                  padding: "10px",
+                }}
+                id="summary"
+                name="summary"
+                value={psychologistData.summary}
+                onChange={handleInputChange}
+              />
             </InputWrapper>
 
             <StyleButton type="submit">Salvar</StyleButton>
