@@ -12,6 +12,7 @@ import {
   MenuSubA,
   StyleLi,
   DivCard,
+  MenuButton,
 } from "./stylePsychologistProfile";
 import { useNavigate, useParams } from "react-router-dom";
 import { IUser } from "../../interfaces/IPsychologistsProfile";
@@ -23,6 +24,9 @@ import { CommentNote } from "../../components/comment/CommentNote";
 import PatientModal from "../../components/modal/PatientModal";
 import { BsPersonFillGear, BsSearch } from "react-icons/bs";
 import { StyleInput } from "../../components/modal/style/StyleModalPsychologist";
+import config from "../../assets/img/icon.png";
+import logo from "../../assets/img/logo.png";
+import { IComments } from "../../interfaces/IComments";
 
 export interface IPatient {
   id: string;
@@ -40,7 +44,7 @@ export function PsychologistProfile() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const [userData, setUserData] = useState<IUser>();
+  const [userData, setUserData] = useState<IComments>();
   const [error, setError] = useState<string>("");
   const navigate = useNavigate();
 
@@ -61,6 +65,10 @@ export function PsychologistProfile() {
         }
       };
       fetchData();
+
+      setInterval(() => {
+        fetchData();
+      }, 5000);
     }
   }, []);
 
@@ -138,33 +146,86 @@ export function PsychologistProfile() {
           <StyleMenu>
             {userData ? (
               <>
-                <img
-                  src={userData.photo}
-                  style={{ width: "55px" }}
-                  alt="avatar"
-                />
-                <p style={{ fontSize: "1rem", color: "#000000" }}>
-                  <b>Olá, Dr.{userData.name}</b>
-                  <br></br>Psicólogo(MenuSubA)
-                </p>
-
-                <div>
+                <div
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    height: "100px",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    boxShadow: "1px 1px 3px black",
+                    borderRadius: "5px",
+                  }}
+                >
+                  <img
+                    src={userData.photo}
+                    style={{ width: "50px" }}
+                    alt="avatar"
+                  />
+                  <p
+                    style={{
+                      fontSize: "14px",
+                      fontWeight: "bold",
+                      color: "#000000",
+                      textAlign: "center",
+                    }}
+                  >
+                    Olá, {userData.name}
+                  </p>
+                </div>
+                <div
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    height: "100px",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    padding: "0 2px",
+                    border: "1px solid rgba(0, 0, 0, 0.3)",
+                    borderRadius: "5px",
+                  }}
+                >
                   <BsPersonFillGear
                     style={{
                       color: "#0077b3",
-                      width: "250px",
+                      width: "100%",
+                      height: "23px",
                       cursor: "pointer",
-                      position: "absolute",
-                      fontSize: "30px",
                     }}
                     onClick={() => setMenuOpen(!menuOpen)}
                   />
-                  {menuOpen && (
-                    <span>
-                      <MenuSubA href="#">Setings</MenuSubA>
-                      <MenuSubA onClick={() => logout()}>Sair</MenuSubA>
-                    </span>
-                  )}
+                  <div
+                    style={{
+                      width: "100%",
+                      height: "50px",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      marginTop: "15px",
+                      padding: "0 3px",
+                      gap: "2px",
+                    }}
+                  >
+                    {menuOpen && <></> ? (
+                      <>
+                        <MenuButton>Configurações</MenuButton>
+                        <MenuButton>Sair</MenuButton>
+                      </>
+                    ) : (
+                      <img
+                        src={logo}
+                        alt=""
+                        style={{
+                          width: "100%",
+                          background: "rgba(0, 0, 0, 0.6)",
+                          borderRadius: "5px",
+                          marginTop: "5px",
+                        }}
+                      />
+                    )}
+                  </div>
                 </div>
               </>
             ) : error ? (
@@ -175,8 +236,8 @@ export function PsychologistProfile() {
           </StyleMenu>
 
           <ListPacient>
-            <h2 style={{ marginTop: "10px" }}>Lista de Pacientes</h2>
-            <div>
+            <h2 style={{ padding: "10px" }}>Lista de Pacientes</h2>
+            <div style={{ display: "flex", alignItems: "center" }}>
               <BsSearch style={{ fontSize: "25px", marginRight: "10px" }} />
               <StyleInput
                 type="text"
@@ -297,6 +358,22 @@ export function PsychologistProfile() {
 
           <SubDiv2>
             <h2>Notificações</h2>
+            {userData?.worker?.patient.map((notes) =>
+              notes.user.note.map((noteComment) => {
+                return (
+                  <div key={noteComment.id} style={{ color: "rgb(240, 240, 240)", fontWeight: "bold" }}>
+                    {noteComment.comment === null ? (
+                      <>
+                        <p>{noteComment.createdAt.toString()}</p>
+                        <p>{noteComment.note}</p>
+                      </>
+                    ) : (
+                      <p></p>
+                    )}
+                  </div>
+                );
+              })
+            )}
           </SubDiv2>
         </Div2>
 

@@ -34,22 +34,24 @@ export const Div1 = styled.div`
 `;
 
 export const StyleMenu = styled.div`
+  background-color: rgba(255, 255, 255, 0.8);
   display: flex;
   align-items: center;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 0.5rem;
   width: 100%;
-  height: 80px;
+  height: 120px;
+  gap: 5px;
   margin-bottom: 1rem;
-  background-color: rgba(255, 255, 255);
 `;
 
 export const ListPacient = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   width: 100%;
-  height: 29rem;
+  height: 430px;
   margin-bottom: 1rem;
   border-radius: 20px;
   background-color: rgba(255, 255, 255);
@@ -67,11 +69,12 @@ export const DivCard = styled.div`
 
 export const StyleLi = styled.li`
   display: flex;
-  width: 90%;
+  width: 100%;
   height: 165px;
   flex-direction: column;
+  justify-content: center;
   text-align: center;
-  margin-top: 0.8rem;
+  margin-top: 10px;
 
   border-radius: 20px;
   border: 1px solid #fff;
@@ -135,9 +138,10 @@ export const SubDiv1 = styled.div`
 export const SubDiv2 = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 3px;
   align-items: center;
   text-align: center;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 0.5rem 2rem;
   background-color: #3399ff;
   margin-top: 1rem;
@@ -154,20 +158,18 @@ export const SubDiv2 = styled.div`
 
 
 export const StyleButton = styled.button`
-  border-radius: 3rem;
-  background-color: #0099ff;
-  color: #f2f2f2;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 60%;
+  padding: 4px;
+  border-radius: 3px;
   border: none;
-  width: 7rem;
-  height: 1.9rem;
-  margin-top: 0.5rem;
-  transition: all 0.1s ease-out;
   cursor: pointer;
+  color: rgb(240, 240, 240);
+  font-size: 15px;
+  transition: all 0.8s ease-out;
 
   &:hover {
-    color: #ffffff;
-    transform: scale(1.1);
-    background-color: #007acc;
+    background-color: rgba(0, 0, 0, 0.6);
   }
 
   @media (max-width: 768px) {
@@ -221,4 +223,18 @@ export const MenuSubA = styled.a`
   }
 `;
 
+export const MenuButton = styled.button`
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  padding: 4px;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  color: rgb(200, 200, 200);
+  font-size: 13px;
+  transition: all 0.8s ease-out;
 
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+`;
